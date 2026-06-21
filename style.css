@@ -909,3 +909,26 @@ footer {
     padding-left: 24px;
   }
 }
+/* ===== REAL AUREON SYMBOL IN LOGO ===== */
+
+.logo .mark {
+  width: 27px;
+  height: 27px;
+  margin: 0 4px;
+  background-image: url("aureon-symbol.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: transparent !important;
+  font-size: 0 !important;
+  display: inline-block;
+  transform: translateY(1px);
+}
+
+@media (max-width: 620px) {
+  .logo .mark {
+    width: 23px;
+    height: 23px;
+    margin: 0 3px;
+  }
+}
