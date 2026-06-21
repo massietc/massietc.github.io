@@ -1,559 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aureon Scale | Digital Systems Built for Growth</title>
-
-  <style>
-    :root {
-      --black: #1f1d1e;
-      --red: #AD3333;
-      --white: #ffffff;
-      --soft: #fbfafa;
-      --gray: #6f6a6b;
-      --line: #e9e3e1;
-      --dark: #151313;
-      --dark-2: #211e1f;
-      --shadow: 0 26px 80px rgba(31, 29, 30, 0.12);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background:
-        radial-gradient(circle at 18px 18px, rgba(173, 51, 51, 0.08) 1px, transparent 1px),
-        #ffffff;
-      background-size: 34px 34px;
-      color: var(--black);
-      overflow-x: hidden;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: 92%;
-      max-width: 1180px;
-      margin: auto;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      padding: 18px 0;
-      background: rgba(255,255,255,0.80);
-      backdrop-filter: blur(20px);
-    }
-
-    .nav {
-      background: rgba(255,255,255,0.96);
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 16px 20px 16px 28px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 16px 60px rgba(31, 29, 30, 0.08);
-    }
-
-    .logo {
-      font-weight: 950;
-      font-size: 28px;
-      letter-spacing: -2px;
-      display: inline-flex;
-      align-items: center;
-      gap: 2px;
-      line-height: 1;
-    }
-
-    .logo .mark {
-      color: var(--red);
-      font-size: 25px;
-      margin: 0 1px;
-    }
-
-    .logo small {
-      font-size: 13px;
-      letter-spacing: 2px;
-      margin-left: 8px;
-      color: var(--gray);
-      font-weight: 800;
-    }
-
-    .desktop-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      color: var(--gray);
-      font-weight: 700;
-    }
-
-    .desktop-links a:hover {
-      color: var(--black);
-    }
-
-    .nav-cta {
-      background: var(--red);
-      color: white !important;
-      padding: 12px 20px;
-      border-radius: 999px;
-      font-weight: 900;
-    }
-
-    .menu-btn {
-      width: 62px;
-      height: 62px;
-      border-radius: 22px;
-      border: 1px solid var(--line);
-      background: white;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 12px 35px rgba(31, 29, 30, 0.08);
-    }
-
-    .menu-lines {
-      width: 30px;
-      height: 22px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .menu-lines span {
-      height: 4px;
-      background: var(--black);
-      border-radius: 999px;
-    }
-
-    .mobile-menu {
-      position: fixed;
-      inset: 0;
-      z-index: 3000;
-      background: rgba(31, 29, 30, 0.22);
-      backdrop-filter: blur(18px);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-    }
-
-    .mobile-menu.active {
-      display: flex;
-    }
-
-    .menu-card {
-      width: 100%;
-      max-width: 620px;
-      min-height: 590px;
-      background: rgba(255,255,255,0.97);
-      border: 1px solid var(--line);
-      border-radius: 44px;
-      padding: 42px;
-      box-shadow: var(--shadow);
-    }
-
-    .menu-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 68px;
-    }
-
-    .close-btn {
-      border: none;
-      background: transparent;
-      font-size: 48px;
-      cursor: pointer;
-      color: var(--black);
-      line-height: 1;
-    }
-
-    .mobile-links {
-      display: grid;
-      gap: 20px;
-      border-left: 4px solid rgba(173, 51, 51, 0.32);
-      padding-left: 34px;
-    }
-
-    .mobile-links a {
-      font-size: clamp(48px, 12vw, 82px);
-      line-height: 0.92;
-      font-weight: 950;
-      letter-spacing: -4px;
-    }
-
-    .hero {
-      padding: 72px 0 72px;
-      text-align: center;
-    }
-
-    .hero h1 {
-      max-width: 1000px;
-      margin: auto;
-      font-size: clamp(58px, 11vw, 122px);
-      line-height: 0.86;
-      letter-spacing: -7px;
-      font-weight: 950;
-    }
-
-    .hero h1 em {
-      font-family: Georgia, serif;
-      font-weight: 400;
-      color: var(--red);
-    }
-
-    .hero-text {
-      max-width: 800px;
-      margin: 34px auto 40px;
-      color: var(--gray);
-      font-size: clamp(21px, 3vw, 31px);
-      line-height: 1.48;
-    }
-
-    .buttons {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 18px 32px;
-      border-radius: 999px;
-      font-size: 20px;
-      font-weight: 900;
-      transition: 0.25s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-3px);
-    }
-
-    .btn-red {
-      background: var(--red);
-      color: white;
-      box-shadow: 0 18px 44px rgba(173, 51, 51, 0.23);
-    }
-
-    .btn-white {
-      background: white;
-      border: 1px solid var(--line);
-      color: var(--black);
-    }
-
-    .mini-grid {
-      margin: 74px auto 0;
-      max-width: 1020px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .mini-card {
-      background: rgba(255,255,255,0.90);
-      border: 1px solid var(--line);
-      border-radius: 36px;
-      padding: 32px;
-      text-align: left;
-      color: var(--gray);
-      font-size: 24px;
-      line-height: 1.35;
-      box-shadow: 0 18px 55px rgba(31, 29, 30, 0.05);
-    }
-
-    .showcase {
-      width: 94%;
-      max-width: 1320px;
-      margin: 0 auto 70px;
-      background:
-        radial-gradient(circle at top right, rgba(173,51,51,0.13), transparent 30%),
-        var(--dark);
-      color: white;
-      border-radius: 54px;
-      padding: 84px 0;
-      box-shadow: var(--shadow);
-    }
-
-    .section-head {
-      max-width: 900px;
-      margin: 0 auto 48px;
-      text-align: center;
-    }
-
-    .label {
-      color: #8d8788;
-      letter-spacing: 8px;
-      text-transform: uppercase;
-      font-size: 16px;
-      margin-bottom: 22px;
-    }
-
-    .section-head h2 {
-      font-size: clamp(46px, 8vw, 88px);
-      line-height: 0.92;
-      letter-spacing: -5px;
-      margin-bottom: 24px;
-    }
-
-    .section-head h2 em {
-      font-family: Georgia, serif;
-      font-weight: 400;
-      color: #d9d4d5;
-    }
-
-    .section-head p {
-      color: #bdb7b8;
-      font-size: 24px;
-      line-height: 1.5;
-    }
-
-    .service-list {
-      display: grid;
-      gap: 22px;
-      max-width: 930px;
-      margin: auto;
-    }
-
-    .service-pill {
-      background: white;
-      color: var(--black);
-      border-radius: 999px;
-      padding: 28px 36px;
-      display: grid;
-      grid-template-columns: 74px 1fr 34px;
-      align-items: center;
-      gap: 22px;
-    }
-
-    .service-icon {
-      width: 62px;
-      height: 62px;
-      border-radius: 50%;
-      background: rgba(173, 51, 51, 0.11);
-      color: var(--red);
-      display: grid;
-      place-items: center;
-      font-weight: 950;
-      font-size: 18px;
-    }
-
-    .service-pill h3 {
-      font-size: 38px;
-      line-height: 0.98;
-      letter-spacing: -2px;
-      margin-bottom: 7px;
-    }
-
-    .service-pill p {
-      color: var(--gray);
-      font-size: 20px;
-      line-height: 1.25;
-    }
-
-    .arrow {
-      color: var(--red);
-      font-size: 40px;
-      transform: rotate(45deg);
-      font-weight: 400;
-    }
-
-    .next {
-      padding: 70px 0 90px;
-    }
-
-    .next-card {
-      background: var(--dark);
-      color: white;
-      border-radius: 46px;
-      padding: 58px;
-      box-shadow: var(--shadow);
-    }
-
-    .next-card h2 {
-      max-width: 850px;
-      font-size: clamp(42px, 7vw, 78px);
-      line-height: 0.92;
-      letter-spacing: -5px;
-      margin-bottom: 28px;
-    }
-
-    .next-card p {
-      color: #bdb7b8;
-      font-size: 26px;
-      line-height: 1.45;
-      max-width: 800px;
-      margin-bottom: 34px;
-    }
-
-    footer {
-      padding: 42px 0 80px;
-      text-align: center;
-      color: #979191;
-    }
-
-    .footer-line {
-      max-width: 900px;
-      margin: 0 auto 34px;
-      border-top: 1px solid var(--line);
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
-      margin-top: 24px;
-      font-size: 20px;
-    }
-
-    @media (max-width: 900px) {
-      .desktop-links {
-        display: none;
-      }
-
-      .menu-btn {
-        display: flex;
-      }
-
-      .mini-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .service-pill {
-        grid-template-columns: 64px 1fr 24px;
-        border-radius: 42px;
-        padding: 24px;
-      }
-
-      .service-pill h3 {
-        font-size: 32px;
-      }
-    }
-
-    @media (max-width: 620px) {
-      .container {
-        width: 92%;
-      }
-
-      header {
-        padding: 16px 0;
-      }
-
-      .nav {
-        padding: 14px 15px 14px 22px;
-      }
-
-      .logo {
-        font-size: 25px;
-      }
-
-      .logo small {
-        display: none;
-      }
-
-      .menu-btn {
-        width: 58px;
-        height: 58px;
-        border-radius: 20px;
-      }
-
-      .hero {
-        padding: 52px 0 70px;
-      }
-
-      .hero h1 {
-        letter-spacing: -4px;
-        font-size: clamp(54px, 13vw, 74px);
-      }
-
-      .hero-text {
-        font-size: 22px;
-      }
-
-      .buttons {
-        gap: 14px;
-        flex-wrap: nowrap;
-      }
-
-      .btn {
-        font-size: 18px;
-        padding: 16px 22px;
-        min-width: 0;
-        flex: 1;
-      }
-
-      .mini-card {
-        font-size: 22px;
-        padding: 28px;
-      }
-
-      .showcase {
-        width: 100%;
-        border-radius: 38px;
-        padding: 62px 0;
-      }
-
-      .section-head h2 {
-        letter-spacing: -3px;
-      }
-
-      .section-head p {
-        font-size: 21px;
-      }
-
-      .service-pill {
-        gap: 16px;
-      }
-
-      .service-pill p {
-        font-size: 18px;
-      }
-
-      .next-card {
-        padding: 34px;
-        border-radius: 34px;
-      }
-
-      .next-card h2 {
-        letter-spacing: -3px;
-      }
-
-      .next-card p {
-        font-size: 22px;
-      }
-
-      .menu-card {
-        min-height: 560px;
-        padding: 34px;
-      }
-
-      .mobile-links {
-        padding-left: 24px;
-      }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aureon Scale | Digital Growth Systems</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
-<body>
+<body class="grid-bg">
 
 <header>
   <div class="container">
@@ -565,10 +18,10 @@
         <a href="services.html">Services</a>
         <a href="about.html">About us</a>
         <a href="team.html">Team</a>
-        <a href="contact.html" class="nav-cta">Get Started</a>
+        <a href="contact.html" class="nav-cta">Start Project</a>
       </nav>
 
-      <button class="menu-btn" onclick="openMenu()" aria-label="Open menu">
+      <button class="menu-btn" onclick="openMenu()">
         <div class="menu-lines"><span></span><span></span><span></span></div>
       </button>
     </div>
@@ -593,112 +46,153 @@
 </div>
 
 <main>
-
-  <section class="hero">
+  <section class="page-hero">
     <div class="container">
-      <h1>We build the <em>digital</em> engine behind growing brands.</h1>
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow"><span class="dot"></span> Digital command systems for growing businesses</div>
 
-      <p class="hero-text">
-        Aureon Scale creates websites, AI workflows, booking systems, dashboards,
-        content pipelines, paid ads, and digital tools that help businesses operate cleaner and grow faster.
-      </p>
+          <h1>Build the system behind your <em>business growth.</em></h1>
 
-      <div class="buttons">
-        <a href="contact.html" class="btn btn-red">Get Started ↗</a>
-        <a href="services.html" class="btn btn-white">See services</a>
-      </div>
+          <p class="hero-text">
+            Aureon Scale builds websites, AI agents, dashboards, booking flows, content systems,
+            and paid ads that work together like one clean growth engine.
+          </p>
 
-      <div class="mini-grid">
-        <div class="mini-card">
-          Custom websites, landing pages, booking flows, and e-commerce systems.
+          <div class="buttons">
+            <a href="contact.html" class="btn btn-red">Start Project ↗</a>
+            <a href="services.html" class="btn btn-white">View Systems</a>
+          </div>
         </div>
 
-        <div class="mini-card">
-          AI agents, internal dashboards, databases, and automation workflows.
-        </div>
+        <div class="command-card">
+          <div class="command-top">
+            <div class="status"><span></span> Growth System Live</div>
+            <div class="status">Aureon OS</div>
+          </div>
 
-        <div class="mini-card">
-          Content systems, paid advertising, brand strategy, and growth support.
+          <div class="command-title">Your business stack, connected.</div>
+
+          <div class="metric-grid">
+            <div class="metric">
+              <strong>01</strong>
+              <p>Website built to capture trust and leads.</p>
+            </div>
+
+            <div class="metric">
+              <strong>02</strong>
+              <p>AI follow-up and customer response system.</p>
+            </div>
+
+            <div class="metric">
+              <strong>03</strong>
+              <p>Dashboard for visibility and operations.</p>
+            </div>
+
+            <div class="metric">
+              <strong>04</strong>
+              <p>Content and ads to bring qualified traffic.</p>
+            </div>
+          </div>
+
+          <div class="pipeline">
+            <div class="pipe-row"><div class="pipe-num">1</div><div>Visitor lands on website</div><div class="pipe-tag">Traffic</div></div>
+            <div class="pipe-row"><div class="pipe-num">2</div><div>Lead gets captured</div><div class="pipe-tag">Form / Booking</div></div>
+            <div class="pipe-row"><div class="pipe-num">3</div><div>AI follows up</div><div class="pipe-tag">Automation</div></div>
+            <div class="pipe-row"><div class="pipe-num">4</div><div>Dashboard tracks progress</div><div class="pipe-tag">Operations</div></div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="showcase">
+  <section class="section">
     <div class="container">
-      <div class="section-head">
-        <div class="label">Showcase</div>
-        <h2>What we <em>build</em> for businesses.</h2>
-        <p>
-          Clean digital systems made to help customers understand, trust, book, buy, and contact faster.
-        </p>
+      <div class="section-head center">
+        <div class="label">Core systems</div>
+        <h2>Everything your business needs to look ready and run better.</h2>
+        <p>Instead of random tools, we build connected digital systems that support your customer journey from attention to conversion.</p>
       </div>
 
-      <div class="service-list">
-        <a href="services.html" class="service-pill">
-          <div class="service-icon">W</div>
-          <div>
-            <h3>Websites</h3>
-            <p>Business sites, landing pages, bookings, and e-commerce.</p>
-          </div>
-          <div class="arrow">↗</div>
-        </a>
+      <div class="cards-grid">
+        <div class="card">
+          <div class="icon">WEB</div>
+          <h3>Website System</h3>
+          <p>Professional sites, landing pages, booking flows, QR ordering, and e-commerce pages built for trust.</p>
+        </div>
 
-        <a href="services.html" class="service-pill">
-          <div class="service-icon">AI</div>
-          <div>
-            <h3>AI Systems</h3>
-            <p>Customer replies, follow-up, reminders, and workflows.</p>
-          </div>
-          <div class="arrow">↗</div>
-        </a>
+        <div class="card">
+          <div class="icon">AI</div>
+          <h3>AI System</h3>
+          <p>Customer response, reminders, lead follow-up, and automation workflows built around your process.</p>
+        </div>
 
-        <a href="services.html" class="service-pill">
-          <div class="service-icon">DB</div>
-          <div>
-            <h3>Dashboards</h3>
-            <p>Admin panels, reporting, operations, and internal tools.</p>
-          </div>
-          <div class="arrow">↗</div>
-        </a>
-
-        <a href="services.html" class="service-pill">
-          <div class="service-icon">AD</div>
-          <div>
-            <h3>Growth</h3>
-            <p>Paid ads, content creation, creative testing, and strategy.</p>
-          </div>
-          <div class="arrow">↗</div>
-        </a>
+        <div class="card">
+          <div class="icon">ADS</div>
+          <h3>Growth System</h3>
+          <p>Content, creative testing, paid ads, and strategy to help your brand get seen by the right people.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="next">
+  <section class="dark-band">
     <div class="container">
-      <div class="next-card">
+      <div class="section-head center">
+        <div class="label">How it works</div>
+        <h2>Built as one system, not separate pieces.</h2>
+        <p>Your website, AI tools, dashboard, content, and ads should all support the same goal: more trust, more leads, and smoother operations.</p>
+      </div>
+
+      <div class="system-stack">
+        <div class="system-row">
+          <div class="system-num">01</div>
+          <div>
+            <h3>Map the business</h3>
+            <p>We understand your offer, customers, bottlenecks, and what needs to happen online for your business to grow.</p>
+          </div>
+        </div>
+
+        <div class="system-row">
+          <div class="system-num">02</div>
+          <div>
+            <h3>Build the digital layer</h3>
+            <p>We create the website, AI agent, dashboard, booking flow, content system, or paid ad structure your business needs.</p>
+          </div>
+        </div>
+
+        <div class="system-row">
+          <div class="system-num">03</div>
+          <div>
+            <h3>Launch and improve</h3>
+            <p>Once the system is live, we help improve the path from attention to action so your setup keeps getting better.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="white-box">
         <div class="label">Next step</div>
-        <h2>Ready to build a setup that actually supports your business?</h2>
-        <p>
-          Tell us what you are launching, fixing, or scaling. We will map the right mix of website,
-          systems, AI, and growth support.
-        </p>
+        <h2>Ready to build your business growth system?</h2>
+        <p>Tell us what you are launching, fixing, or scaling. We will help choose the right digital setup for your business.</p>
 
-        <div class="buttons" style="justify-content:flex-start;">
-          <a href="contact.html" class="btn btn-red">Start the conversation</a>
+        <div class="buttons" style="margin-top:34px;">
+          <a href="contact.html" class="btn btn-red">Request consultation</a>
           <a href="services.html" class="btn btn-white">Explore services</a>
         </div>
       </div>
     </div>
   </section>
-
 </main>
 
 <footer>
   <div class="container">
     <div class="footer-line"></div>
-    <div class="logo" style="justify-content:center;">AURE<span class="mark">✺</span>N<small>SCALE</small></div>
-    <p style="margin-top:14px;">Websites, AI systems, dashboards, content, ads, and growth support.</p>
+    <div class="logo footer-logo">AURE<span class="mark">✺</span>N<small>SCALE</small></div>
+    <p>Websites, AI systems, dashboards, content, ads, and growth support.</p>
 
     <div class="footer-links">
       <a href="index.html">Home</a>
@@ -711,15 +205,8 @@
 </footer>
 
 <script>
-function openMenu() {
-  document.getElementById("mobileMenu").classList.add("active");
-  document.body.style.overflow = "hidden";
-}
-
-function closeMenu() {
-  document.getElementById("mobileMenu").classList.remove("active");
-  document.body.style.overflow = "auto";
-}
+function openMenu(){document.getElementById("mobileMenu").classList.add("active")}
+function closeMenu(){document.getElementById("mobileMenu").classList.remove("active")}
 </script>
 
 </body>
