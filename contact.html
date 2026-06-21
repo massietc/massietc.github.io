@@ -141,8 +141,83 @@
   <section class="direct-card">
     <div class="label" style="color:var(--red);">Direct contact</div>
 
-    <
+    <h2>Prefer to connect directly?</h2>
 
-  window.location.href = "mailto:sohail.qaderi007@gmail.com?subject=" + subject + "&body=" + body;
+    <p>
+      Call or email Aureon Scale directly for a quicker conversation about your project,
+      website, AI system, automation, or next step.
+    </p>
+
+    <div class="buttons">
+      <a href="tel:+16199667654" class="btn btn-red">Call +1 (619) 966-7654</a>
+      <a href="mailto:aureonscale@gmail.com" class="btn btn-red">Email Aureon Scale</a>
+    </div>
+
+    <p style="margin-top:28px; font-size:20px;">
+      Phone: <a href="tel:+16199667654">+1 (619) 966-7654</a><br>
+      Email: <a href="mailto:aureonscale@gmail.com">aureonscale@gmail.com</a>
+    </p>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-line"></div>
+
+    <div class="logo footer-logo">AURE<span class="mark">✺</span>N<small>SCALE</small></div>
+
+    <p>Websites, AI systems, dashboards, content, ads, and growth support.</p>
+
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About us</a>
+      <a href="team.html">Team</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function openMenu() {
+  document.getElementById("mobileMenu").classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+function closeMenu() {
+  document.getElementById("mobileMenu").classList.remove("active");
+  document.body.style.overflow = "auto";
+}
+
+function sendContact(event) {
+  event.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const business = document.getElementById("business").value;
+  const goal = document.getElementById("goal").value;
+  const message = document.getElementById("message").value;
+
+  const selected = Array.from(document.querySelectorAll(".chip input:checked"))
+    .map(function(input) {
+      return input.value;
+    })
+    .join(", ");
+
+  const subject = encodeURIComponent("New Aureon Scale Consultation Request");
+
+  const body = encodeURIComponent(
+    "Name: " + name + "\n" +
+    "Email: " + email + "\n" +
+    "Business: " + business + "\n" +
+    "Goal: " + goal + "\n" +
+    "Services: " + selected + "\n\n" +
+    "Message:\n" + message
+  );
+
+  window.location.href = "mailto:aureonscale@gmail.com?subject=" + subject + "&body=" + body;
 }
 </script>
+
+</body>
+</html>
