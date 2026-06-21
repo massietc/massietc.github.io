@@ -1,17 +1,571 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aureon Scale | About</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aureon Scale | Contact</title>
+
+  <style>
+    :root {
+      --black: #1f1d1e;
+      --red: #AD3333;
+      --white: #ffffff;
+      --soft: #fbfafa;
+      --gray: #6f6a6b;
+      --line: #e9e3e1;
+      --dark: #171515;
+      --dark-2: #252222;
+      --shadow: 0 28px 90px rgba(31, 29, 30, 0.14);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #ffffff;
+      color: var(--black);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea {
+      font-family: inherit;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 1180px;
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 18px 0;
+      background: rgba(255, 255, 255, 0.80);
+      backdrop-filter: blur(20px);
+    }
+
+    .nav {
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 16px 20px 16px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 16px 60px rgba(31, 29, 30, 0.08);
+    }
+
+    .logo {
+      font-weight: 950;
+      font-size: 28px;
+      letter-spacing: -2px;
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      line-height: 1;
+    }
+
+    .logo .mark {
+      color: var(--red);
+      font-size: 25px;
+      margin: 0 1px;
+    }
+
+    .logo small {
+      font-size: 13px;
+      letter-spacing: 2px;
+      margin-left: 8px;
+      color: var(--gray);
+      font-weight: 800;
+    }
+
+    .desktop-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: var(--gray);
+      font-weight: 700;
+    }
+
+    .desktop-links a:hover {
+      color: var(--black);
+    }
+
+    .nav-cta {
+      background: var(--red);
+      color: white !important;
+      padding: 12px 20px;
+      border-radius: 999px;
+      font-weight: 900;
+    }
+
+    .menu-btn {
+      width: 62px;
+      height: 62px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: white;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 12px 35px rgba(31, 29, 30, 0.08);
+    }
+
+    .menu-lines {
+      width: 30px;
+      height: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .menu-lines span {
+      height: 4px;
+      background: var(--black);
+      border-radius: 999px;
+    }
+
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      z-index: 3000;
+      background: rgba(31, 29, 30, 0.22);
+      backdrop-filter: blur(18px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .mobile-menu.active {
+      display: flex;
+    }
+
+    .menu-card {
+      width: 100%;
+      max-width: 620px;
+      min-height: 590px;
+      background: rgba(255, 255, 255, 0.97);
+      border: 1px solid var(--line);
+      border-radius: 44px;
+      padding: 42px;
+      box-shadow: var(--shadow);
+    }
+
+    .menu-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 68px;
+    }
+
+    .close-btn {
+      border: none;
+      background: transparent;
+      font-size: 48px;
+      cursor: pointer;
+      color: var(--black);
+      line-height: 1;
+    }
+
+    .mobile-links {
+      display: grid;
+      gap: 20px;
+      border-left: 4px solid rgba(173, 51, 51, 0.32);
+      padding-left: 34px;
+    }
+
+    .mobile-links a {
+      font-size: clamp(48px, 12vw, 82px);
+      line-height: 0.92;
+      font-weight: 950;
+      letter-spacing: -4px;
+    }
+
+    .contact-wrap {
+      width: 94%;
+      max-width: 1180px;
+      margin: 34px auto 70px;
+    }
+
+    .contact-shell {
+      background:
+        radial-gradient(circle at top right, rgba(173, 51, 51, 0.16), transparent 32%),
+        linear-gradient(160deg, #191616, #211d1e);
+      color: white;
+      border-radius: 54px;
+      padding: 62px;
+      box-shadow: var(--shadow);
+    }
+
+    .label {
+      color: #908a8b;
+      letter-spacing: 8px;
+      text-transform: uppercase;
+      font-size: 16px;
+      margin-bottom: 26px;
+    }
+
+    h1 {
+      max-width: 900px;
+      font-size: clamp(54px, 9vw, 100px);
+      line-height: 0.88;
+      letter-spacing: -6px;
+      font-weight: 950;
+    }
+
+    h1 em {
+      font-family: Georgia, serif;
+      font-weight: 400;
+      color: #d8d3d4;
+    }
+
+    .intro {
+      max-width: 880px;
+      color: #bdb7b8;
+      font-size: clamp(22px, 3.2vw, 31px);
+      line-height: 1.48;
+      margin: 34px 0 42px;
+    }
+
+    .check-list {
+      display: grid;
+      gap: 18px;
+      margin-bottom: 52px;
+    }
+
+    .check-item {
+      display: grid;
+      grid-template-columns: 32px 1fr;
+      gap: 16px;
+      color: #aaa4a5;
+      font-size: clamp(20px, 3vw, 25px);
+      line-height: 1.35;
+    }
+
+    .check {
+      color: var(--red);
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    .form {
+      display: grid;
+      gap: 30px;
+    }
+
+    label {
+      display: grid;
+      gap: 12px;
+      color: #d6d0d1;
+      font-size: 23px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 24px;
+      color: white;
+      padding: 23px 25px;
+      font-size: 24px;
+      outline: none;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: rgba(173, 51, 51, 0.75);
+      box-shadow: 0 0 0 4px rgba(173, 51, 51, 0.16);
+    }
+
+    textarea {
+      min-height: 190px;
+      resize: vertical;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(255, 255, 255, 0.28);
+    }
+
+    .chips-title {
+      color: #d6d0d1;
+      font-size: 23px;
+      margin-bottom: 16px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      color: #d0cbcc;
+      border-radius: 999px;
+      padding: 15px 22px;
+      font-size: 21px;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .chip input {
+      display: none;
+    }
+
+    .chip span {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      display: grid;
+      place-items: center;
+      font-size: 15px;
+    }
+
+    .chip:has(input:checked) {
+      background: var(--red);
+      color: white;
+      border-color: var(--red);
+      box-shadow: 0 18px 40px rgba(173, 51, 51, 0.22);
+    }
+
+    .note {
+      color: #8f898a;
+      font-size: 22px;
+      line-height: 1.45;
+    }
+
+    .submit-btn {
+      width: 100%;
+      background: var(--red);
+      color: white;
+      border: none;
+      border-radius: 999px;
+      padding: 23px 28px;
+      font-size: 25px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: 0.25s ease;
+      box-shadow: 0 18px 44px rgba(173, 51, 51, 0.20);
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      background: #bf3838;
+    }
+
+    .direct-card {
+      width: 94%;
+      max-width: 1180px;
+      margin: 0 auto 80px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 48px;
+      padding: 56px;
+      box-shadow: 0 24px 70px rgba(31, 29, 30, 0.07);
+    }
+
+    .direct-label {
+      color: var(--red);
+      letter-spacing: 8px;
+      text-transform: uppercase;
+      font-size: 16px;
+      margin-bottom: 28px;
+    }
+
+    .direct-card h2 {
+      max-width: 760px;
+      font-size: clamp(44px, 8vw, 82px);
+      line-height: 0.92;
+      letter-spacing: -5px;
+      margin-bottom: 28px;
+    }
+
+    .direct-card p {
+      color: var(--gray);
+      font-size: clamp(22px, 3vw, 30px);
+      line-height: 1.5;
+      max-width: 850px;
+      margin-bottom: 36px;
+    }
+
+    .direct-buttons {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .direct-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--red);
+      color: white;
+      padding: 18px 34px;
+      border-radius: 999px;
+      font-size: 22px;
+      font-weight: 900;
+      min-width: 190px;
+    }
+
+    footer {
+      padding: 42px 0 80px;
+      text-align: center;
+      color: #979191;
+    }
+
+    .footer-line {
+      max-width: 900px;
+      margin: 0 auto 34px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-logo {
+      justify-content: center;
+      margin-bottom: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+      font-size: 20px;
+    }
+
+    .footer-small {
+      letter-spacing: 7px;
+      text-transform: uppercase;
+      margin-top: 28px;
+      color: #aaa4a5;
+    }
+
+    @media (max-width: 900px) {
+      .desktop-links {
+        display: none;
+      }
+
+      .menu-btn {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .container {
+        width: 92%;
+      }
+
+      header {
+        padding: 16px 0;
+      }
+
+      .nav {
+        padding: 14px 15px 14px 22px;
+      }
+
+      .logo {
+        font-size: 25px;
+      }
+
+      .logo small {
+        display: none;
+      }
+
+      .menu-btn {
+        width: 58px;
+        height: 58px;
+        border-radius: 20px;
+      }
+
+      .contact-wrap {
+        width: 92%;
+        margin-top: 28px;
+      }
+
+      .contact-shell {
+        padding: 34px;
+        border-radius: 36px;
+      }
+
+      h1 {
+        letter-spacing: -4px;
+      }
+
+      .intro {
+        font-size: 22px;
+      }
+
+      .check-item {
+        font-size: 20px;
+      }
+
+      input,
+      textarea {
+        font-size: 21px;
+      }
+
+      .chip {
+        font-size: 20px;
+      }
+
+      .direct-card {
+        width: 92%;
+        padding: 34px;
+        border-radius: 36px;
+      }
+
+      .direct-card h2 {
+        letter-spacing: -3px;
+      }
+
+      .direct-btn {
+        width: 100%;
+      }
+
+      .menu-card {
+        min-height: 560px;
+        padding: 34px;
+      }
+
+      .mobile-links {
+        padding-left: 24px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
 <header>
   <div class="container">
     <div class="nav">
-      <a href="index.html" class="logo">AURE<span>ON</span><small>SCALE</small></a>
+      <a href="index.html" class="logo">AURE<span class="mark">✺</span>N<small>SCALE</small></a>
 
       <nav class="desktop-links">
         <a href="index.html">Home</a>
@@ -21,7 +575,7 @@
         <a href="contact.html" class="nav-cta">Get Started</a>
       </nav>
 
-      <button class="menu-btn" onclick="openMenu()">
+      <button class="menu-btn" onclick="openMenu()" aria-label="Open menu">
         <div class="menu-lines"><span></span><span></span><span></span></div>
       </button>
     </div>
@@ -31,7 +585,7 @@
 <div class="mobile-menu" id="mobileMenu">
   <div class="menu-card">
     <div class="menu-top">
-      <a href="index.html" class="logo">AURE<span>ON</span></a>
+      <a href="index.html" class="logo">AURE<span class="mark">✺</span>N</a>
       <button class="close-btn" onclick="closeMenu()">×</button>
     </div>
 
@@ -46,48 +600,133 @@
 </div>
 
 <main>
-  <section class="section">
-    <div class="container">
-      <div class="white-box">
-        <div class="eyebrow"><span class="dot"></span> About Aureon</div>
 
-        <h2>A focused team building websites, systems, and growth support that work together.</h2>
+  <section class="contact-wrap">
+    <div class="contact-shell">
+      <div class="label">Request a consultation</div>
 
-        <p>
-          Aureon Scale was built for businesses that need more than a nice-looking site.
-          We bring design, development, operations thinking, content, paid ads, and growth support
-          into one clean digital setup.
-        </p>
+      <h1>Let’s build <em>what</em> your business needs.</h1>
 
-        <div class="buttons" style="justify-content:flex-start; margin-top:42px;">
-          <a href="contact.html" class="btn btn-red">Get Started</a>
-          <a href="services.html" class="btn btn-white">See services</a>
+      <p class="intro">
+        Tell us what you are trying to launch, improve, or automate. We will help map the right
+        website, AI system, dashboard, content, or growth setup around your business.
+      </p>
+
+      <div class="check-list">
+        <div class="check-item">
+          <div class="check">✓</div>
+          <div>Websites structured for trust, leads, bookings, and sales.</div>
+        </div>
+
+        <div class="check-item">
+          <div class="check">✓</div>
+          <div>AI agents and automations built around your workflow.</div>
+        </div>
+
+        <div class="check-item">
+          <div class="check">✓</div>
+          <div>Dashboards and internal tools connected to your operations.</div>
+        </div>
+
+        <div class="check-item">
+          <div class="check">✓</div>
+          <div>Content and paid ad support to keep growth moving.</div>
         </div>
       </div>
+
+      <form class="form" onsubmit="sendContact(event)">
+        <label>
+          Name
+          <input id="name" type="text" placeholder="Your name" required>
+        </label>
+
+        <label>
+          Email
+          <input id="email" type="email" placeholder="you@example.com" required>
+        </label>
+
+        <label>
+          Business name
+          <input id="business" type="text" placeholder="Business or brand">
+        </label>
+
+        <label>
+          What matters most right now?
+          <input id="goal" type="text" placeholder="More leads, better systems, launch, automation">
+        </label>
+
+        <div>
+          <div class="chips-title">Which services do you want help with?</div>
+
+          <div class="chips">
+            <label class="chip">
+              <input type="checkbox" value="Websites">
+              <span>✓</span>
+              Websites
+            </label>
+
+            <label class="chip">
+              <input type="checkbox" value="AI agents">
+              <span>✓</span>
+              AI agents
+            </label>
+
+            <label class="chip">
+              <input type="checkbox" value="Admin dashboards">
+              <span>✓</span>
+              Admin dashboards
+            </label>
+
+            <label class="chip">
+              <input type="checkbox" value="Marketing & growth">
+              <span>✓</span>
+              Marketing & growth
+            </label>
+          </div>
+        </div>
+
+        <label>
+          Tell us what you need
+          <textarea id="message" placeholder="What are you trying to launch, improve, or automate?"></textarea>
+        </label>
+
+        <p class="note">
+          Pick the services that fit, send the details, and we will review the best next step for your business.
+        </p>
+
+        <button class="submit-btn" type="submit">Request consultation</button>
+      </form>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="section-head">
-        <div class="label">Principles</div>
-        <h2>What guides the work.</h2>
-        <p>These are the standards behind the decisions we make across websites, systems, and growth execution.</p>
-      </div>
+  <section class="direct-card">
+    <div class="direct-label">Direct contact</div>
 
-      <div class="services-grid">
-        <div class="card"><h3>Minimal by default</h3><p>We remove noise and keep the message, hierarchy, and conversion path clear.</p></div>
-        <div class="card"><h3>Built for use</h3><p>Pretty pages are not enough. We focus on systems that help businesses sell and manage better.</p></div>
-        <div class="card"><h3>Fast to launch</h3><p>We favor clear decisions, focused execution, and work that is ready to use.</p></div>
-      </div>
+    <h2>Prefer to connect directly?</h2>
+
+    <p>
+      Call or email us directly for a quicker conversation about your project, website, system,
+      automation, or next step.
+    </p>
+
+    <div class="direct-buttons">
+      <a href="tel:+10000000000" class="direct-btn">Call Us</a>
+      <a href="mailto:sohail.qaderi007@gmail.com" class="direct-btn">Email Us</a>
     </div>
   </section>
+
 </main>
 
 <footer>
   <div class="container">
-    <div class="logo">AURE<span>ON</span><small>SCALE</small></div>
-    <p>Software, websites, systems, and growth support.</p>
+    <div class="footer-line"></div>
+
+    <div class="logo footer-logo">AURE<span class="mark">✺</span>N<small>SCALE</small></div>
+
+    <p>Websites, AI systems, dashboards, content, ads, and growth support.</p>
+
+    <div class="footer-small">All rights reserved.</div>
+
     <div class="footer-links">
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
@@ -95,12 +734,53 @@
       <a href="team.html">Team</a>
       <a href="contact.html">Contact</a>
     </div>
+
+    <div style="margin-top:42px;">
+      <a href="index.html">Privacy Policy</a>
+      <span style="margin:0 10px;">-</span>
+      <a href="index.html">Terms & Conditions</a>
+    </div>
   </div>
 </footer>
 
 <script>
-function openMenu(){document.getElementById("mobileMenu").classList.add("active")}
-function closeMenu(){document.getElementById("mobileMenu").classList.remove("active")}
+function openMenu() {
+  document.getElementById("mobileMenu").classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+function closeMenu() {
+  document.getElementById("mobileMenu").classList.remove("active");
+  document.body.style.overflow = "auto";
+}
+
+function sendContact(event) {
+  event.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const business = document.getElementById("business").value;
+  const goal = document.getElementById("goal").value;
+  const message = document.getElementById("message").value;
+
+  const selected = Array.from(document.querySelectorAll(".chip input:checked"))
+    .map(function(input) {
+      return input.value;
+    })
+    .join(", ");
+
+  const subject = encodeURIComponent("New Aureon Scale Consultation Request");
+  const body = encodeURIComponent(
+    "Name: " + name + "\n" +
+    "Email: " + email + "\n" +
+    "Business: " + business + "\n" +
+    "Goal: " + goal + "\n" +
+    "Services: " + selected + "\n\n" +
+    "Message:\n" + message
+  );
+
+  window.location.href = "mailto:sohail.qaderi007@gmail.com?subject=" + subject + "&body=" + body;
+}
 </script>
 
 </body>
