@@ -1,17 +1,564 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aureon Scale | Home</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aureon Scale | Digital Systems Built for Growth</title>
+
+  <style>
+    :root {
+      --black: #1f1d1e;
+      --red: #AD3333;
+      --white: #ffffff;
+      --soft: #fbfafa;
+      --gray: #6f6a6b;
+      --line: #e9e3e1;
+      --dark: #151313;
+      --dark-2: #211e1f;
+      --shadow: 0 26px 80px rgba(31, 29, 30, 0.12);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 18px 18px, rgba(173, 51, 51, 0.08) 1px, transparent 1px),
+        #ffffff;
+      background-size: 34px 34px;
+      color: var(--black);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 1180px;
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 18px 0;
+      background: rgba(255,255,255,0.80);
+      backdrop-filter: blur(20px);
+    }
+
+    .nav {
+      background: rgba(255,255,255,0.96);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 16px 20px 16px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 16px 60px rgba(31, 29, 30, 0.08);
+    }
+
+    .logo {
+      font-weight: 950;
+      font-size: 28px;
+      letter-spacing: -2px;
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      line-height: 1;
+    }
+
+    .logo .mark {
+      color: var(--red);
+      font-size: 25px;
+      margin: 0 1px;
+    }
+
+    .logo small {
+      font-size: 13px;
+      letter-spacing: 2px;
+      margin-left: 8px;
+      color: var(--gray);
+      font-weight: 800;
+    }
+
+    .desktop-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: var(--gray);
+      font-weight: 700;
+    }
+
+    .desktop-links a:hover {
+      color: var(--black);
+    }
+
+    .nav-cta {
+      background: var(--red);
+      color: white !important;
+      padding: 12px 20px;
+      border-radius: 999px;
+      font-weight: 900;
+    }
+
+    .menu-btn {
+      width: 62px;
+      height: 62px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: white;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 12px 35px rgba(31, 29, 30, 0.08);
+    }
+
+    .menu-lines {
+      width: 30px;
+      height: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .menu-lines span {
+      height: 4px;
+      background: var(--black);
+      border-radius: 999px;
+    }
+
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      z-index: 3000;
+      background: rgba(31, 29, 30, 0.22);
+      backdrop-filter: blur(18px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .mobile-menu.active {
+      display: flex;
+    }
+
+    .menu-card {
+      width: 100%;
+      max-width: 620px;
+      min-height: 590px;
+      background: rgba(255,255,255,0.97);
+      border: 1px solid var(--line);
+      border-radius: 44px;
+      padding: 42px;
+      box-shadow: var(--shadow);
+    }
+
+    .menu-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 68px;
+    }
+
+    .close-btn {
+      border: none;
+      background: transparent;
+      font-size: 48px;
+      cursor: pointer;
+      color: var(--black);
+      line-height: 1;
+    }
+
+    .mobile-links {
+      display: grid;
+      gap: 20px;
+      border-left: 4px solid rgba(173, 51, 51, 0.32);
+      padding-left: 34px;
+    }
+
+    .mobile-links a {
+      font-size: clamp(48px, 12vw, 82px);
+      line-height: 0.92;
+      font-weight: 950;
+      letter-spacing: -4px;
+    }
+
+    .hero {
+      padding: 72px 0 72px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      max-width: 1000px;
+      margin: auto;
+      font-size: clamp(58px, 11vw, 122px);
+      line-height: 0.86;
+      letter-spacing: -7px;
+      font-weight: 950;
+    }
+
+    .hero h1 em {
+      font-family: Georgia, serif;
+      font-weight: 400;
+      color: var(--red);
+    }
+
+    .hero-text {
+      max-width: 800px;
+      margin: 34px auto 40px;
+      color: var(--gray);
+      font-size: clamp(21px, 3vw, 31px);
+      line-height: 1.48;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px 32px;
+      border-radius: 999px;
+      font-size: 20px;
+      font-weight: 900;
+      transition: 0.25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-red {
+      background: var(--red);
+      color: white;
+      box-shadow: 0 18px 44px rgba(173, 51, 51, 0.23);
+    }
+
+    .btn-white {
+      background: white;
+      border: 1px solid var(--line);
+      color: var(--black);
+    }
+
+    .mini-grid {
+      margin: 74px auto 0;
+      max-width: 1020px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .mini-card {
+      background: rgba(255,255,255,0.90);
+      border: 1px solid var(--line);
+      border-radius: 36px;
+      padding: 32px;
+      text-align: left;
+      color: var(--gray);
+      font-size: 24px;
+      line-height: 1.35;
+      box-shadow: 0 18px 55px rgba(31, 29, 30, 0.05);
+    }
+
+    .showcase {
+      width: 94%;
+      max-width: 1320px;
+      margin: 0 auto 70px;
+      background:
+        radial-gradient(circle at top right, rgba(173,51,51,0.13), transparent 30%),
+        var(--dark);
+      color: white;
+      border-radius: 54px;
+      padding: 84px 0;
+      box-shadow: var(--shadow);
+    }
+
+    .section-head {
+      max-width: 900px;
+      margin: 0 auto 48px;
+      text-align: center;
+    }
+
+    .label {
+      color: #8d8788;
+      letter-spacing: 8px;
+      text-transform: uppercase;
+      font-size: 16px;
+      margin-bottom: 22px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(46px, 8vw, 88px);
+      line-height: 0.92;
+      letter-spacing: -5px;
+      margin-bottom: 24px;
+    }
+
+    .section-head h2 em {
+      font-family: Georgia, serif;
+      font-weight: 400;
+      color: #d9d4d5;
+    }
+
+    .section-head p {
+      color: #bdb7b8;
+      font-size: 24px;
+      line-height: 1.5;
+    }
+
+    .service-list {
+      display: grid;
+      gap: 22px;
+      max-width: 930px;
+      margin: auto;
+    }
+
+    .service-pill {
+      background: white;
+      color: var(--black);
+      border-radius: 999px;
+      padding: 28px 36px;
+      display: grid;
+      grid-template-columns: 74px 1fr 34px;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .service-icon {
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      background: rgba(173, 51, 51, 0.11);
+      color: var(--red);
+      display: grid;
+      place-items: center;
+      font-weight: 950;
+      font-size: 18px;
+    }
+
+    .service-pill h3 {
+      font-size: 38px;
+      line-height: 0.98;
+      letter-spacing: -2px;
+      margin-bottom: 7px;
+    }
+
+    .service-pill p {
+      color: var(--gray);
+      font-size: 20px;
+      line-height: 1.25;
+    }
+
+    .arrow {
+      color: var(--red);
+      font-size: 40px;
+      transform: rotate(45deg);
+      font-weight: 400;
+    }
+
+    .next {
+      padding: 70px 0 90px;
+    }
+
+    .next-card {
+      background: var(--dark);
+      color: white;
+      border-radius: 46px;
+      padding: 58px;
+      box-shadow: var(--shadow);
+    }
+
+    .next-card h2 {
+      max-width: 850px;
+      font-size: clamp(42px, 7vw, 78px);
+      line-height: 0.92;
+      letter-spacing: -5px;
+      margin-bottom: 28px;
+    }
+
+    .next-card p {
+      color: #bdb7b8;
+      font-size: 26px;
+      line-height: 1.45;
+      max-width: 800px;
+      margin-bottom: 34px;
+    }
+
+    footer {
+      padding: 42px 0 80px;
+      text-align: center;
+      color: #979191;
+    }
+
+    .footer-line {
+      max-width: 900px;
+      margin: 0 auto 34px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+      font-size: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .desktop-links {
+        display: none;
+      }
+
+      .menu-btn {
+        display: flex;
+      }
+
+      .mini-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-pill {
+        grid-template-columns: 64px 1fr 24px;
+        border-radius: 42px;
+        padding: 24px;
+      }
+
+      .service-pill h3 {
+        font-size: 32px;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .container {
+        width: 92%;
+      }
+
+      header {
+        padding: 16px 0;
+      }
+
+      .nav {
+        padding: 14px 15px 14px 22px;
+      }
+
+      .logo {
+        font-size: 25px;
+      }
+
+      .logo small {
+        display: none;
+      }
+
+      .menu-btn {
+        width: 58px;
+        height: 58px;
+        border-radius: 20px;
+      }
+
+      .hero {
+        padding: 52px 0 70px;
+      }
+
+      .hero h1 {
+        letter-spacing: -4px;
+        font-size: clamp(54px, 13vw, 74px);
+      }
+
+      .hero-text {
+        font-size: 22px;
+      }
+
+      .buttons {
+        gap: 14px;
+        flex-wrap: nowrap;
+      }
+
+      .btn {
+        font-size: 18px;
+        padding: 16px 22px;
+        min-width: 0;
+        flex: 1;
+      }
+
+      .mini-card {
+        font-size: 22px;
+        padding: 28px;
+      }
+
+      .showcase {
+        width: 100%;
+        border-radius: 38px;
+        padding: 62px 0;
+      }
+
+      .section-head h2 {
+        letter-spacing: -3px;
+      }
+
+      .section-head p {
+        font-size: 21px;
+      }
+
+      .service-pill {
+        gap: 16px;
+      }
+
+      .service-pill p {
+        font-size: 18px;
+      }
+
+      .next-card {
+        padding: 34px;
+        border-radius: 34px;
+      }
+
+      .next-card h2 {
+        letter-spacing: -3px;
+      }
+
+      .next-card p {
+        font-size: 22px;
+      }
+
+      .menu-card {
+        min-height: 560px;
+        padding: 34px;
+      }
+
+      .mobile-links {
+        padding-left: 24px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
 <header>
   <div class="container">
     <div class="nav">
-      <a href="index.html" class="logo">AURE<span>ON</span><small>SCALE</small></a>
+      <a href="index.html" class="logo">AURE<span class="mark">✺</span>N<small>SCALE</small></a>
 
       <nav class="desktop-links">
         <a href="index.html">Home</a>
@@ -21,7 +568,7 @@
         <a href="contact.html" class="nav-cta">Get Started</a>
       </nav>
 
-      <button class="menu-btn" onclick="openMenu()">
+      <button class="menu-btn" onclick="openMenu()" aria-label="Open menu">
         <div class="menu-lines"><span></span><span></span><span></span></div>
       </button>
     </div>
@@ -31,7 +578,7 @@
 <div class="mobile-menu" id="mobileMenu">
   <div class="menu-card">
     <div class="menu-top">
-      <a href="index.html" class="logo">AURE<span>ON</span></a>
+      <a href="index.html" class="logo">AURE<span class="mark">✺</span>N</a>
       <button class="close-btn" onclick="closeMenu()">×</button>
     </div>
 
@@ -46,15 +593,14 @@
 </div>
 
 <main>
+
   <section class="hero">
     <div class="container">
-      <div class="eyebrow"><span class="dot"></span> Digital systems built to scale</div>
-
-      <h1>We build the <em>digital</em> layer behind your business.</h1>
+      <h1>We build the <em>digital</em> engine behind growing brands.</h1>
 
       <p class="hero-text">
-        We build websites, AI agents, booking systems, e-commerce, admin panels,
-        content, paid ads, and growth systems for businesses that want to scale.
+        Aureon Scale creates websites, AI workflows, booking systems, dashboards,
+        content pipelines, paid ads, and digital tools that help businesses operate cleaner and grow faster.
       </p>
 
       <div class="buttons">
@@ -62,48 +608,97 @@
         <a href="services.html" class="btn btn-white">See services</a>
       </div>
 
-      <div class="mini-grid" style="margin-top:76px;">
-        <div class="card">
-          <div class="icon">S</div>
-          <h3>Software</h3>
-          <p>Software development, databases, dashboards, and admin panels.</p>
+      <div class="mini-grid">
+        <div class="mini-card">
+          Custom websites, landing pages, booking flows, and e-commerce systems.
         </div>
 
-        <div class="card">
-          <div class="icon">W</div>
-          <h3>Websites</h3>
-          <p>Websites, booking systems, ordering QR flows, and e-commerce.</p>
+        <div class="mini-card">
+          AI agents, internal dashboards, databases, and automation workflows.
         </div>
 
-        <div class="card">
-          <div class="icon">M</div>
-          <h3>Marketing</h3>
-          <p>Content creation, social media, paid ads, and brand growth.</p>
+        <div class="mini-card">
+          Content systems, paid advertising, brand strategy, and growth support.
         </div>
       </div>
     </div>
   </section>
 
-  <section class="dark-section">
+  <section class="showcase">
     <div class="container">
-      <div class="section-head center">
-        <div class="label">Next step</div>
-        <h2>Ready to build the right setup for your business?</h2>
-        <p>Tell us what you need and we will map the right mix of website, systems, AI, and growth support.</p>
+      <div class="section-head">
+        <div class="label">Showcase</div>
+        <h2>What we <em>build</em> for businesses.</h2>
+        <p>
+          Clean digital systems made to help customers understand, trust, book, buy, and contact faster.
+        </p>
       </div>
 
-      <div class="buttons">
-        <a href="contact.html" class="btn btn-red">Start the conversation</a>
-        <a href="services.html" class="btn btn-white">See services</a>
+      <div class="service-list">
+        <a href="services.html" class="service-pill">
+          <div class="service-icon">W</div>
+          <div>
+            <h3>Websites</h3>
+            <p>Business sites, landing pages, bookings, and e-commerce.</p>
+          </div>
+          <div class="arrow">↗</div>
+        </a>
+
+        <a href="services.html" class="service-pill">
+          <div class="service-icon">AI</div>
+          <div>
+            <h3>AI Systems</h3>
+            <p>Customer replies, follow-up, reminders, and workflows.</p>
+          </div>
+          <div class="arrow">↗</div>
+        </a>
+
+        <a href="services.html" class="service-pill">
+          <div class="service-icon">DB</div>
+          <div>
+            <h3>Dashboards</h3>
+            <p>Admin panels, reporting, operations, and internal tools.</p>
+          </div>
+          <div class="arrow">↗</div>
+        </a>
+
+        <a href="services.html" class="service-pill">
+          <div class="service-icon">AD</div>
+          <div>
+            <h3>Growth</h3>
+            <p>Paid ads, content creation, creative testing, and strategy.</p>
+          </div>
+          <div class="arrow">↗</div>
+        </a>
       </div>
     </div>
   </section>
+
+  <section class="next">
+    <div class="container">
+      <div class="next-card">
+        <div class="label">Next step</div>
+        <h2>Ready to build a setup that actually supports your business?</h2>
+        <p>
+          Tell us what you are launching, fixing, or scaling. We will map the right mix of website,
+          systems, AI, and growth support.
+        </p>
+
+        <div class="buttons" style="justify-content:flex-start;">
+          <a href="contact.html" class="btn btn-red">Start the conversation</a>
+          <a href="services.html" class="btn btn-white">Explore services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <footer>
   <div class="container">
-    <div class="logo">AURE<span>ON</span><small>SCALE</small></div>
-    <p>Software, websites, systems, and growth support.</p>
+    <div class="footer-line"></div>
+    <div class="logo" style="justify-content:center;">AURE<span class="mark">✺</span>N<small>SCALE</small></div>
+    <p style="margin-top:14px;">Websites, AI systems, dashboards, content, ads, and growth support.</p>
 
     <div class="footer-links">
       <a href="index.html">Home</a>
@@ -118,12 +713,14 @@
 <script>
 function openMenu() {
   document.getElementById("mobileMenu").classList.add("active");
+  document.body.style.overflow = "hidden";
 }
+
 function closeMenu() {
   document.getElementById("mobileMenu").classList.remove("active");
+  document.body.style.overflow = "auto";
 }
 </script>
 
 </body>
 </html>
-
