@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aureon Scale | About</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="nav">
+      <a href="index.html" class="logo">AURE<span>ON</span><small>SCALE</small></a>
+
+      <nav class="desktop-links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About us</a>
+        <a href="team.html">Team</a>
+        <a href="contact.html" class="nav-cta">Get Started</a>
+      </nav>
+
+      <button class="menu-btn" onclick="openMenu()">
+        <div class="menu-lines"><span></span><span></span><span></span></div>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="menu-card">
+    <div class="menu-top">
+      <a href="index.html" class="logo">AURE<span>ON</span></a>
+      <button class="close-btn" onclick="closeMenu()">×</button>
+    </div>
+
+    <nav class="mobile-links">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About us</a>
+      <a href="team.html">Team</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</div>
+
+<main>
+  <section class="section">
+    <div class="container">
+      <div class="white-box">
+        <div class="eyebrow"><span class="dot"></span> About Aureon</div>
+
+        <h2>A focused team building websites, systems, and growth support that work together.</h2>
+
+        <p>
+          Aureon Scale was built for businesses that need more than a nice-looking site.
+          We bring design, development, operations thinking, content, paid ads, and growth support
+          into one clean digital setup.
+        </p>
+
+        <div class="buttons" style="justify-content:flex-start; margin-top:42px;">
+          <a href="contact.html" class="btn btn-red">Get Started</a>
+          <a href="services.html" class="btn btn-white">See services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div class="label">Principles</div>
+        <h2>What guides the work.</h2>
+        <p>These are the standards behind the decisions we make across websites, systems, and growth execution.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="card"><h3>Minimal by default</h3><p>We remove noise and keep the message, hierarchy, and conversion path clear.</p></div>
+        <div class="card"><h3>Built for use</h3><p>Pretty pages are not enough. We focus on systems that help businesses sell and manage better.</p></div>
+        <div class="card"><h3>Fast to launch</h3><p>We favor clear decisions, focused execution, and work that is ready to use.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="logo">AURE<span>ON</span><small>SCALE</small></div>
+    <p>Software, websites, systems, and growth support.</p>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About us</a>
+      <a href="team.html">Team</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function openMenu(){document.getElementById("mobileMenu").classList.add("active")}
+function closeMenu(){document.getElementById("mobileMenu").classList.remove("active")}
+</script>
+
+</body>
+</html>
