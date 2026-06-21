@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aureon Scale | Contact</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="nav">
+      <a href="index.html" class="logo">AURE<span>ON</span><small>SCALE</small></a>
+
+      <nav class="desktop-links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About us</a>
+        <a href="team.html">Team</a>
+        <a href="contact.html" class="nav-cta">Get Started</a>
+      </nav>
+
+      <button class="menu-btn" onclick="openMenu()">
+        <div class="menu-lines"><span></span><span></span><span></span></div>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="menu-card">
+    <div class="menu-top">
+      <a href="index.html" class="logo">AURE<span>ON</span></a>
+      <button class="close-btn" onclick="closeMenu()">×</button>
+    </div>
+
+    <nav class="mobile-links">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About us</a>
+      <a href="team.html">Team</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</div>
+
+<main>
+  <section class="contact-shell">
+    <div class="label">Request a consultation</div>
+
+    <h1>Let’s build <em>what</em> your business needs.</h1>
+
+    <p class="contact-intro">
+      Tell us what you need help with, choose the service that fits best, and send the details.
+      We build websites, AI agents, admin dashboards, and growth systems that work together.
+    </p>
+
+    <div class="check-list">
+      <div class="check-item"><div class="check">✓</div><div>Websites built for leads, bookings, and sales.</div></div>
+      <div class="check-item"><div class="check">✓</div><div>AI agents trained around your workflow.</div></div>
+      <div class="check-item"><div class="check">✓</div><div>Dashboards and systems connected to operations.</div></div>
+      <div class="check-item"><div class="check">✓</div><div>Marketing support that keeps growth moving.</div></div>
+    </div>
+
+    <form class="form" onsubmit="sendContact(event)">
+      <label>
+        Name
+        <input id="name" type="text" placeholder="Your name" required>
+      </label>
+
+      <label>
+        Email
+        <input id="email" type="email" placeholder="you@example.com" required>
+      </label>
+
+      <label>
+        Business name
+        <input id="business" type="text" placeholder="Business or brand">
+      </label>
+
+      <label>
+        What matters most right now?
+        <input id="goal" type="text" placeholder="More leads, better ops, launch, automation">
+      </label>
+
+      <label>
+        Tell us what you need
+        <textarea id="message" placeholder="What are you trying to launch, improve, or automate?"></textarea>
+      </label>
+
+      <button class="submit-btn" type="submit">Request consultation</button>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="logo">AURE<span>ON</span><small>SCALE</small></div>
+    <p>Software, websites, systems, and growth support.</p>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About us</a>
+      <a href="team.html">Team</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function openMenu(){document.getElementById("mobileMenu").classList.add("active")}
+function closeMenu(){document.getElementById("mobileMenu").classList.remove("active")}
+
+function sendContact(event) {
+  event.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const business = document.getElementById("business").value;
+  const goal = document.getElementById("goal").value;
+  const message = document.getElementById("message").value;
+
+  const subject = encodeURIComponent("New Aureon Scale Consultation Request");
+  const body = encodeURIComponent(
+    "Name: " + name + "\n" +
+    "Email: " + email + "\n" +
+    "Business: " + business + "\n" +
+    "Goal: " + goal + "\n\n" +
+    "Message:\n" + message
+  );
+
+  window.location.href = "mailto:sohail.qaderi007@gmail.com?subject=" + subject + "&body=" + body;
+}
+</script>
+
+</body>
+</html>
