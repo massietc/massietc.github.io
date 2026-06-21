@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aureon Scale | Services</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="nav">
+      <a href="index.html" class="logo">AURE<span>ON</span><small>SCALE</small></a>
+
+      <nav class="desktop-links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About us</a>
+        <a href="team.html">Team</a>
+        <a href="contact.html" class="nav-cta">Get Started</a>
+      </nav>
+
+      <button class="menu-btn" onclick="openMenu()">
+        <div class="menu-lines"><span></span><span></span><span></span></div>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="menu-card">
+    <div class="menu-top">
+      <a href="index.html" class="logo">AURE<span>ON</span></a>
+      <button class="close-btn" onclick="closeMenu()">×</button>
+    </div>
+
+    <nav class="mobile-links">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About us</a>
+      <a href="team.html">Team</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</div>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <div class="eyebrow"><span class="dot"></span> Services</div>
+
+      <h1>Custom-built for <em>how</em> your business runs.</h1>
+
+      <p class="hero-text">
+        We build custom websites, AI agents, admin dashboards, paid advertising systems,
+        content creation pipelines, and brand growth strategy.
+      </p>
+
+      <div class="buttons">
+        <a href="contact.html" class="btn btn-red">Contact us</a>
+        <a href="index.html" class="btn btn-white">Back home</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark-section">
+    <div class="container">
+      <div class="section-head center">
+        <div class="label">What we do</div>
+        <h2>What we <em>actually</em> do.</h2>
+      </div>
+
+      <div class="service-list">
+        <div class="service-pill">
+          <div class="icon">W</div>
+          <div>
+            <h3>Website Development</h3>
+            <p>Business sites, booking, QR ordering, e-commerce.</p>
+          </div>
+        </div>
+
+        <div class="service-pill">
+          <div class="icon">AI</div>
+          <div>
+            <h3>AI Agents</h3>
+            <p>Calls, follow-up, reminders, and customer response.</p>
+          </div>
+        </div>
+
+        <div class="service-pill">
+          <div class="icon">DB</div>
+          <div>
+            <h3>Admin Dashboards</h3>
+            <p>Databases, reporting, internal tools, and workflows.</p>
+          </div>
+        </div>
+
+        <div class="service-pill">
+          <div class="icon">AD</div>
+          <div>
+            <h3>Paid Advertising</h3>
+            <p>Ads, content creation, landing pages, and brand scaling.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head center">
+        <h2>Services built for growth.</h2>
+        <p>Aureon Scale gives businesses the digital tools they need to look professional, get attention, capture leads, and grow online.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="card"><div class="icon">W</div><h3>Websites</h3><p>Modern sites built to create trust and convert visitors into leads.</p></div>
+        <div class="card"><div class="icon">AI</div><h3>AI Agents</h3><p>AI customer response systems, automation workflows, and smart tools.</p></div>
+        <div class="card"><div class="icon">AD</div><h3>Paid Ads</h3><p>Ad creatives, landing pages, and campaign strategy.</p></div>
+        <div class="card"><div class="icon">C</div><h3>Content</h3><p>Short-form videos, hooks, captions, and content systems.</p></div>
+        <div class="card"><div class="icon">S</div><h3>Software</h3><p>Dashboards, admin panels, databases, and custom systems.</p></div>
+        <div class="card"><div class="icon">QR</div><h3>QR Ordering</h3><p>Ordering flows for restaurants, shops, and service businesses.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="logo">AURE<span>ON</span><small>SCALE</small></div>
+    <p>Software, websites, systems, and growth support.</p>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About us</a>
+      <a href="team.html">Team</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function openMenu(){document.getElementById("mobileMenu").classList.add("active")}
+function closeMenu(){document.getElementById("mobileMenu").classList.remove("active")}
+</script>
+
+</body>
+</html>
