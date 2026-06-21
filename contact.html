@@ -11,14 +11,14 @@
 <header>
   <div class="container">
     <div class="nav">
-      <a href="index.html" class="logo">AURE<span>ON</span><small>SCALE</small></a>
+      <a href="index.html" class="logo">AURE<span class="mark">✺</span>N<small>SCALE</small></a>
 
       <nav class="desktop-links">
         <a href="index.html">Home</a>
         <a href="services.html">Services</a>
         <a href="about.html">About us</a>
         <a href="team.html">Team</a>
-        <a href="contact.html" class="nav-cta">Get Started</a>
+        <a href="contact.html" class="nav-cta">Start Project</a>
       </nav>
 
       <button class="menu-btn" onclick="openMenu()">
@@ -31,10 +31,9 @@
 <div class="mobile-menu" id="mobileMenu">
   <div class="menu-card">
     <div class="menu-top">
-      <a href="index.html" class="logo">AURE<span>ON</span></a>
+      <a href="index.html" class="logo">AURE<span class="mark">✺</span>N</a>
       <button class="close-btn" onclick="closeMenu()">×</button>
     </div>
-
     <nav class="mobile-links">
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
@@ -52,15 +51,15 @@
     <h1>Let’s build <em>what</em> your business needs.</h1>
 
     <p class="contact-intro">
-      Tell us what you need help with, choose the service that fits best, and send the details.
-      We build websites, AI agents, admin dashboards, and growth systems that work together.
+      Tell us what you are trying to launch, improve, or automate. We will help map the right website,
+      AI system, dashboard, content, or growth setup around your business.
     </p>
 
     <div class="check-list">
-      <div class="check-item"><div class="check">✓</div><div>Websites built for leads, bookings, and sales.</div></div>
-      <div class="check-item"><div class="check">✓</div><div>AI agents trained around your workflow.</div></div>
-      <div class="check-item"><div class="check">✓</div><div>Dashboards and systems connected to operations.</div></div>
-      <div class="check-item"><div class="check">✓</div><div>Marketing support that keeps growth moving.</div></div>
+      <div class="check-item"><div class="check">✓</div><div>Websites structured for trust, leads, bookings, and sales.</div></div>
+      <div class="check-item"><div class="check">✓</div><div>AI agents and automations built around your workflow.</div></div>
+      <div class="check-item"><div class="check">✓</div><div>Dashboards and internal tools connected to your operations.</div></div>
+      <div class="check-item"><div class="check">✓</div><div>Content and paid ad support to keep growth moving.</div></div>
     </div>
 
     <form class="form" onsubmit="sendContact(event)">
@@ -81,8 +80,18 @@
 
       <label>
         What matters most right now?
-        <input id="goal" type="text" placeholder="More leads, better ops, launch, automation">
+        <input id="goal" type="text" placeholder="More leads, better systems, launch, automation">
       </label>
+
+      <div>
+        <label style="margin-bottom:14px;">Which services do you want help with?</label>
+        <div class="chips">
+          <label class="chip"><input type="checkbox" value="Websites"><span>✓</span> Websites</label>
+          <label class="chip"><input type="checkbox" value="AI agents"><span>✓</span> AI agents</label>
+          <label class="chip"><input type="checkbox" value="Admin dashboards"><span>✓</span> Admin dashboards</label>
+          <label class="chip"><input type="checkbox" value="Marketing & growth"><span>✓</span> Marketing & growth</label>
+        </div>
+      </div>
 
       <label>
         Tell us what you need
@@ -92,12 +101,24 @@
       <button class="submit-btn" type="submit">Request consultation</button>
     </form>
   </section>
+
+  <section class="direct-card">
+    <div class="label" style="color:var(--red);">Direct contact</div>
+    <h2>Prefer to connect directly?</h2>
+    <p>Call or email us directly for a quicker conversation about your project, website, system, automation, or next step.</p>
+
+    <div class="buttons">
+      <a href="tel:+10000000000" class="btn btn-red">Call Us</a>
+      <a href="mailto:sohail.qaderi007@gmail.com" class="btn btn-red">Email Us</a>
+    </div>
+  </section>
 </main>
 
 <footer>
   <div class="container">
-    <div class="logo">AURE<span>ON</span><small>SCALE</small></div>
-    <p>Software, websites, systems, and growth support.</p>
+    <div class="footer-line"></div>
+    <div class="logo footer-logo">AURE<span class="mark">✺</span>N<small>SCALE</small></div>
+    <p>Websites, AI systems, dashboards, content, ads, and growth support.</p>
     <div class="footer-links">
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
@@ -121,18 +142,20 @@ function sendContact(event) {
   const goal = document.getElementById("goal").value;
   const message = document.getElementById("message").value;
 
+  const selected = Array.from(document.querySelectorAll(".chip input:checked"))
+    .map(function(input) { return input.value; })
+    .join(", ");
+
   const subject = encodeURIComponent("New Aureon Scale Consultation Request");
   const body = encodeURIComponent(
     "Name: " + name + "\n" +
     "Email: " + email + "\n" +
     "Business: " + business + "\n" +
-    "Goal: " + goal + "\n\n" +
+    "Goal: " + goal + "\n" +
+    "Services: " + selected + "\n\n" +
     "Message:\n" + message
   );
 
   window.location.href = "mailto:sohail.qaderi007@gmail.com?subject=" + subject + "&body=" + body;
 }
 </script>
-
-</body>
-</html>
