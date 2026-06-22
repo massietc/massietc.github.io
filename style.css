@@ -921,3 +921,96 @@ footer {
     padding-left: 24px;
   }
 }
+
+
+/* =========================
+   REAL AUREON WORDMARK LOGO
+   File needed: aureon-wordmark.png
+========================= */
+
+.logo {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 14px;
+  white-space: nowrap;
+  text-decoration: none;
+  font-size: 0 !important;
+  letter-spacing: 0 !important;
+  line-height: 1;
+}
+
+/* Hide old typed logo pieces */
+.logo .mark,
+.logo small {
+  display: none !important;
+}
+
+/* Show your real AUREON logo image */
+.logo::before {
+  content: "";
+  width: 145px;
+  height: 46px;
+  display: inline-block;
+  background-image: url("aureon-wordmark.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  flex-shrink: 0;
+}
+
+/* Keep SCALE badge beside the logo */
+.logo::after {
+  content: "SCALE";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  padding: 0 13px;
+  border: 2px solid rgba(173, 51, 51, 0.22);
+  border-radius: 999px;
+  background: rgba(173, 51, 51, 0.06);
+  color: #AD3333;
+  font-size: 11px;
+  font-weight: 950;
+  letter-spacing: 2.4px;
+  line-height: 1;
+}
+
+/* Footer logo */
+footer .logo::before {
+  width: 160px;
+  height: 52px;
+}
+
+footer .logo::after {
+  height: 30px;
+  font-size: 11px;
+}
+
+/* Mobile size */
+@media (max-width: 620px) {
+  .logo {
+    gap: 9px;
+  }
+
+  .logo::before {
+    width: 116px;
+    height: 38px;
+  }
+
+  .logo::after {
+    height: 24px;
+    padding: 0 9px;
+    font-size: 8px;
+    letter-spacing: 1.7px;
+  }
+
+  .nav .logo {
+    max-width: calc(100% - 82px);
+  }
+
+  footer .logo::before {
+    width: 135px;
+    height: 44px;
+  }
+}
