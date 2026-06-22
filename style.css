@@ -589,4 +589,48 @@ footer nav {
   .mobile-card {
     padding: 28px;
   }
+}/* LOGO + NAV FIX FOR ALL PAGES */
+
+.desktop-links {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  font-size: 15px;
+  font-weight: 850;
+  color: var(--gray);
 }
+
+.desktop-links a:hover {
+  color: var(--black);
+}
+
+.nav-cta,
+.nav-btn {
+  background: var(--red);
+  color: white !important;
+  padding: 14px 22px;
+  border-radius: 999px;
+  box-shadow: 0 14px 34px rgba(173, 51, 51, 0.22);
+}
+
+.logo,
+.footer-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.logo img,
+.footer-logo img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  display: block;
+}
+
+.logo span,
+.footer-logo span {
+  font-size: 23px;
+  font-weight: 950;
+
