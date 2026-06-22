@@ -4,18 +4,517 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aureon Scale | About</title>
-  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    :root {
+      --black: #1F1D1E;
+      --red: #AD3333;
+      --white: #FFFFFF;
+      --soft: #F8F5F4;
+      --gray: #6F6A6B;
+      --line: #E8DEDC;
+      --shadow: 0 24px 70px rgba(31, 29, 30, 0.12);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 20px 20px, rgba(173, 51, 51, 0.08) 1.5px, transparent 2px),
+        var(--white);
+      background-size: 34px 34px;
+      color: var(--black);
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(92%, 1180px);
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 18px 0;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      width: min(92%, 1180px);
+      height: 88px;
+      margin: auto;
+      padding: 0 18px 0 24px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      white-space: nowrap;
+    }
+
+    .brand img {
+      width: 54px;
+      height: 54px;
+      object-fit: contain;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .brand-text {
+      font-size: 25px;
+      font-weight: 950;
+      letter-spacing: -1.2px;
+      color: var(--black);
+    }
+
+    .brand-text span {
+      color: var(--red);
+    }
+
+    .desktop-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      font-size: 15px;
+      font-weight: 850;
+      color: var(--gray);
+    }
+
+    .desktop-links a:hover {
+      color: var(--black);
+    }
+
+    .nav-cta {
+      background: var(--red);
+      color: white !important;
+      padding: 14px 22px;
+      border-radius: 999px;
+      box-shadow: 0 14px 34px rgba(173, 51, 51, 0.24);
+    }
+
+    .menu-btn {
+      width: 58px;
+      height: 58px;
+      border: 1px solid var(--line);
+      background: white;
+      border-radius: 22px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 7px;
+      cursor: pointer;
+    }
+
+    .menu-btn span {
+      width: 32px;
+      height: 5px;
+      background: var(--black);
+      border-radius: 999px;
+      display: block;
+    }
+
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      background: rgba(31, 29, 30, 0.35);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      z-index: 3000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 22px;
+    }
+
+    .mobile-menu.active {
+      display: flex;
+    }
+
+    .mobile-card {
+      width: min(100%, 540px);
+      background: white;
+      border-radius: 42px;
+      padding: 32px;
+      box-shadow: 0 30px 90px rgba(31, 29, 30, 0.24);
+    }
+
+    .mobile-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 48px;
+    }
+
+    .close-btn {
+      border: none;
+      background: transparent;
+      font-size: 50px;
+      line-height: 1;
+      cursor: pointer;
+      color: var(--black);
+    }
+
+    .mobile-links {
+      display: grid;
+      gap: 22px;
+      padding-left: 28px;
+      border-left: 4px solid rgba(173, 51, 51, 0.22);
+    }
+
+    .mobile-links a {
+      font-size: clamp(42px, 12vw, 72px);
+      font-weight: 950;
+      letter-spacing: -4px;
+      line-height: 0.95;
+      color: var(--black);
+    }
+
+    .hero {
+      padding: 88px 0 70px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 14px 20px;
+      color: var(--gray);
+      font-size: 17px;
+      font-weight: 900;
+      margin-bottom: 32px;
+      box-shadow: 0 14px 40px rgba(31, 29, 30, 0.05);
+    }
+
+    .eyebrow .dot {
+      width: 12px;
+      height: 12px;
+      background: var(--red);
+      border-radius: 50%;
+      display: block;
+    }
+
+    .hero h1 {
+      max-width: 1080px;
+      font-size: clamp(54px, 8vw, 108px);
+      line-height: 0.88;
+      letter-spacing: -6px;
+      font-weight: 950;
+    }
+
+    .hero h1 em {
+      color: var(--red);
+      font-family: Georgia, serif;
+      font-weight: 500;
+    }
+
+    .hero p {
+      max-width: 900px;
+      margin-top: 30px;
+      color: var(--gray);
+      font-size: clamp(22px, 2.5vw, 30px);
+      line-height: 1.5;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 36px;
+    }
+
+    .btn {
+      min-height: 60px;
+      padding: 18px 30px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 950;
+    }
+
+    .btn-red {
+      background: var(--red);
+      color: white;
+      border-color: var(--red);
+      box-shadow: 0 18px 44px rgba(173, 51, 51, 0.24);
+    }
+
+    .btn-light {
+      background: white;
+      color: var(--black);
+    }
+
+    .section {
+      padding: 82px 0;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .info-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 36px;
+      padding: 36px;
+      box-shadow: 0 18px 60px rgba(31, 29, 30, 0.05);
+    }
+
+    .mini {
+      color: var(--red);
+      text-transform: uppercase;
+      letter-spacing: 6px;
+      font-size: 13px;
+      font-weight: 950;
+      margin-bottom: 18px;
+    }
+
+    .info-card h2,
+    .section-head h2,
+    .dark-card h2 {
+      font-size: clamp(42px, 6vw, 76px);
+      line-height: 0.9;
+      letter-spacing: -4px;
+      font-weight: 950;
+    }
+
+    .info-card p,
+    .section-head p,
+    .dark-card p {
+      margin-top: 22px;
+      color: var(--gray);
+      font-size: 22px;
+      line-height: 1.55;
+    }
+
+    .section-head {
+      max-width: 860px;
+      margin: 0 auto 44px;
+      text-align: center;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .value-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      padding: 32px;
+      min-height: 290px;
+      box-shadow: 0 18px 60px rgba(31, 29, 30, 0.05);
+    }
+
+    .value-card span {
+      width: 62px;
+      height: 62px;
+      border-radius: 20px;
+      background: rgba(173, 51, 51, 0.10);
+      color: var(--red);
+      display: grid;
+      place-items: center;
+      font-size: 18px;
+      font-weight: 950;
+      margin-bottom: 44px;
+    }
+
+    .value-card h3 {
+      font-size: 32px;
+      letter-spacing: -1.5px;
+      margin-bottom: 14px;
+    }
+
+    .value-card p {
+      color: var(--gray);
+      font-size: 19px;
+      line-height: 1.52;
+    }
+
+    .dark-card {
+      margin: 60px 0 90px;
+      padding: 62px;
+      border-radius: 46px;
+      background:
+        radial-gradient(circle at 100% 0%, rgba(173, 51, 51, 0.24), transparent 34%),
+        var(--black);
+      color: white;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+
+    .dark-card p {
+      color: #C9C1C2;
+    }
+
+    .dark-card .mini {
+      color: #F1C7C7;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      background: white;
+      padding: 54px 4% 80px;
+      text-align: center;
+    }
+
+    .footer-brand {
+      justify-content: center;
+    }
+
+    footer p {
+      margin: 18px auto 24px;
+      color: var(--gray);
+      font-size: 22px;
+      line-height: 1.45;
+      max-width: 760px;
+    }
+
+    footer nav {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      color: var(--gray);
+      font-size: 20px;
+      font-weight: 850;
+    }
+
+    @media (max-width: 980px) {
+      .desktop-links {
+        display: none;
+      }
+
+      .menu-btn {
+        display: flex;
+      }
+
+      .about-grid,
+      .values-grid,
+      .dark-card {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      header {
+        padding: 12px 0;
+      }
+
+      .nav {
+        width: 92%;
+        height: 76px;
+        padding: 0 14px 0 18px;
+      }
+
+      .brand img {
+        width: 46px;
+        height: 46px;
+      }
+
+      .brand-text {
+        font-size: 20px;
+        letter-spacing: -0.8px;
+      }
+
+      .menu-btn {
+        width: 56px;
+        height: 56px;
+      }
+
+      .hero {
+        padding: 56px 0 54px;
+      }
+
+      .hero h1 {
+        font-size: clamp(48px, 15vw, 72px);
+        letter-spacing: -4px;
+      }
+
+      .hero p {
+        font-size: 21px;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .section {
+        padding: 64px 0;
+      }
+
+      .info-card,
+      .value-card,
+      .dark-card {
+        padding: 30px;
+        border-radius: 34px;
+      }
+
+      .info-card h2,
+      .section-head h2,
+      .dark-card h2 {
+        letter-spacing: -3px;
+      }
+
+      footer nav {
+        gap: 22px;
+        font-size: 18px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <header class="site-header">
-    <div class="nav-shell">
+  <header>
+    <div class="nav">
       <a href="index.html" class="brand">
         <img src="aureon-symol.png.png" alt="Aureon Scale logo">
-        <span>Aureon <b>Scale</b></span>
+        <div class="brand-text">Aureon <span>Scale</span></div>
       </a>
 
-      <nav class="desktop-nav">
+      <nav class="desktop-links">
         <a href="index.html">Home</a>
         <a href="services.html">Services</a>
         <a href="about.html">About us</a>
@@ -24,7 +523,9 @@
       </nav>
 
       <button class="menu-btn" onclick="openMenu()" aria-label="Open menu">
-        <span></span><span></span><span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
     </div>
   </header>
@@ -34,7 +535,7 @@
       <div class="mobile-top">
         <a href="index.html" class="brand">
           <img src="aureon-symol.png.png" alt="Aureon Scale logo">
-          <span>Aureon <b>Scale</b></span>
+          <div class="brand-text">Aureon <span>Scale</span></div>
         </a>
         <button class="close-btn" onclick="closeMenu()">×</button>
       </div>
@@ -50,59 +551,79 @@
   </div>
 
   <main>
-    <section class="page-hero">
-      <div class="eyebrow"><span></span> About Aureon Scale</div>
-      <h1>We connect design, technology, and growth into one business system.</h1>
+    <section class="hero container">
+      <div class="eyebrow">
+        <span class="dot"></span>
+        About Aureon Scale
+      </div>
+
+      <h1>We build the digital layer that helps <em>businesses</em> grow.</h1>
+
       <p>
-        Aureon Scale was built for businesses that need more than a nice-looking page.
-        We create websites, systems, content, and traffic support that make the business
-        easier to trust, easier to manage, and easier to grow.
+        Aureon Scale helps businesses create a stronger online presence with websites,
+        AI systems, dashboards, content, and growth support that work together as one clean system.
       </p>
 
-      <div class="actions">
+      <div class="buttons">
         <a href="contact.html" class="btn btn-red">Work with us</a>
         <a href="team.html" class="btn btn-light">Meet the team</a>
       </div>
     </section>
 
-    <section class="about-split">
-      <div class="info-box">
-        <p class="mini">Our mission</p>
-        <h2>Make businesses look professional and operate smarter.</h2>
-        <p>
-          We help businesses build the digital layer behind their work:
-          websites, AI tools, dashboards, content, ads, and systems that support growth.
-        </p>
-      </div>
+    <section class="section container">
+      <div class="about-grid">
+        <article class="info-card">
+          <p class="mini">Our mission</p>
+          <h2>Make businesses look professional and operate smarter.</h2>
+          <p>
+            We help businesses build the digital tools behind their work:
+            websites, AI agents, dashboards, content systems, ads, and workflows.
+          </p>
+        </article>
 
-      <div class="info-box">
-        <p class="mini">Our focus</p>
-        <h2>Useful design with real business function.</h2>
-        <p>
-          Our goal is not just to make something look good.
-          The goal is to help customers understand your offer, take action,
-          and trust your business faster.
-        </p>
+        <article class="info-card">
+          <p class="mini">Our focus</p>
+          <h2>Useful design with real business function.</h2>
+          <p>
+            The goal is not just a good-looking page. The goal is a system that helps
+            customers trust you faster and take action easier.
+          </p>
+        </article>
       </div>
     </section>
 
-    <section class="section">
-      <div class="section-head center">
-        <p class="mini">Principles</p>
-        <h2>What guides the work.</h2>
+    <section class="dark-card container">
+      <div>
+        <p class="mini">Why we exist</p>
+        <h2>Most businesses do not need random tools.</h2>
       </div>
 
-      <div class="grid three">
+      <p>
+        They need a clear online system: a website that explains the offer,
+        content that creates attention, ads that bring traffic, and AI tools that help respond faster.
+      </p>
+    </section>
+
+    <section class="section container">
+      <div class="section-head">
+        <p class="mini">Principles</p>
+        <h2>What guides the work.</h2>
+        <p>
+          Every build is made around clarity, speed, trust, and growth.
+        </p>
+      </div>
+
+      <div class="values-grid">
         <article class="value-card">
           <span>01</span>
           <h3>Clarity first</h3>
-          <p>We make the offer, message, and customer path easy to understand.</p>
+          <p>We make your offer, message, and customer path easy to understand.</p>
         </article>
 
         <article class="value-card">
           <span>02</span>
           <h3>Useful systems</h3>
-          <p>We focus on tools that help teams sell, manage, respond, and deliver better.</p>
+          <p>We focus on tools that help businesses sell, manage, respond, and deliver better.</p>
         </article>
 
         <article class="value-card">
@@ -117,7 +638,7 @@
   <footer>
     <a href="index.html" class="brand footer-brand">
       <img src="aureon-symol.png.png" alt="Aureon Scale logo">
-      <span>Aureon <b>Scale</b></span>
+      <div class="brand-text">Aureon <span>Scale</span></div>
     </a>
 
     <p>Websites, AI systems, dashboards, content, ads, and growth support.</p>
