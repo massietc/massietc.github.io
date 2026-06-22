@@ -72,26 +72,37 @@ header {
   box-shadow: 0 16px 60px rgba(31, 29, 30, 0.08);
 }
 
-/* LOGO FIXED: always shows AUREON SCALE */
+/* =========================
+   AUREON SCALE LOGO FIX
+   Uses aureon-gold-symbol.png
+========================= */
+
 .logo {
   white-space: nowrap;
   display: inline-flex !important;
   align-items: center;
-  gap: 1px;
+  gap: 4px;
   font-weight: 950;
-  font-size: 28px;
-  letter-spacing: -2.2px;
+  font-size: 32px;
+  letter-spacing: -2.4px;
   color: var(--black);
   line-height: 1;
   position: relative;
 }
 
 .logo .mark {
-  color: var(--red);
-  font-size: 24px;
-  margin: 0 2px;
-  transform: translateY(1px);
+  width: 32px;
+  height: 32px;
+  margin: 0 5px;
+  background-image: url("aureon-gold-symbol.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: transparent !important;
+  font-size: 0 !important;
   display: inline-block;
+  flex-shrink: 0;
+  transform: translateY(1px);
 }
 
 .logo small {
@@ -100,15 +111,15 @@ header {
 
 .logo::after {
   content: "SCALE";
-  margin-left: 10px;
-  padding: 6px 9px 5px;
-  border: 1px solid rgba(173, 51, 51, 0.22);
+  margin-left: 14px;
+  padding: 7px 12px 6px;
+  border: 2px solid rgba(173, 51, 51, 0.22);
   border-radius: 999px;
-  background: rgba(173, 51, 51, 0.07);
+  background: rgba(173, 51, 51, 0.06);
   color: var(--red);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 950;
-  letter-spacing: 1.8px;
+  letter-spacing: 2.5px;
   line-height: 1;
   transform: translateY(1px);
 }
@@ -116,7 +127,7 @@ header {
 .footer-logo.logo::after,
 footer .logo::after {
   font-size: 11px;
-  padding: 7px 10px 6px;
+  padding: 7px 12px 6px;
 }
 
 .desktop-links {
@@ -800,21 +811,22 @@ footer {
   }
 
   .logo {
-    font-size: 23px;
+    font-size: 25px;
     letter-spacing: -1.8px;
+    gap: 2px;
   }
 
   .logo .mark {
-    font-size: 21px;
-    margin: 0 1px;
+    width: 24px;
+    height: 24px;
+    margin: 0 3px;
   }
 
   .logo::after {
-    content: "SCALE";
-    margin-left: 7px;
-    padding: 5px 7px 4px;
+    margin-left: 8px;
+    padding: 5px 8px 4px;
     font-size: 8px;
-    letter-spacing: 1.3px;
+    letter-spacing: 1.6px;
   }
 
   .nav .logo {
@@ -907,28 +919,5 @@ footer {
 
   .mobile-links {
     padding-left: 24px;
-  }
-}
-/* ===== REAL AUREON SYMBOL IN LOGO ===== */
-
-.logo .mark {
-  width: 27px;
-  height: 27px;
-  margin: 0 4px;
-  background-image: url("aureon-symbol.png");
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  color: transparent !important;
-  font-size: 0 !important;
-  display: inline-block;
-  transform: translateY(1px);
-}
-
-@media (max-width: 620px) {
-  .logo .mark {
-    width: 23px;
-    height: 23px;
-    margin: 0 3px;
   }
 }
