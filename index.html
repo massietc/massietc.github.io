@@ -9,26 +9,27 @@
 
 <body>
   <header class="site-header">
-    <div class="container nav-wrap">
-      <a href="index.html" class="brand">
-        <span class="brand-icon">
-          <img src="aureon-symbol.png" alt="Aureon Scale symbol" />
+    <div class="container nav">
+      <a href="index.html" class="brand" aria-label="Aureon Scale homepage">
+        <span class="brand-symbol">
+          <img src="aureon-symbol.png" alt="Aureon Scale symbol" onerror="this.style.display='none'; this.parentElement.classList.add('missing-logo');" />
         </span>
-        <span class="brand-text">
+
+        <span class="brand-name">
           <strong>Aureon</strong>
           <small>Scale</small>
         </span>
       </a>
 
-      <nav class="desktop-nav">
-        <a href="#services">Services</a>
-        <a href="#systems">Systems</a>
-        <a href="#process">Process</a>
-        <a href="#team">Team</a>
-        <a href="#contact" class="nav-cta">Contact</a>
+      <nav class="desktop-links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About us</a>
+        <a href="team.html">Team</a>
+        <a href="contact.html" class="nav-pill">Contact</a>
       </nav>
 
-      <button class="menu-btn" onclick="openMenu()" aria-label="Open menu">
+      <button class="menu-button" onclick="openMenu()" aria-label="Open menu">
         <span></span>
         <span></span>
         <span></span>
@@ -37,27 +38,28 @@
   </header>
 
   <div class="mobile-menu" id="mobileMenu">
-    <div class="mobile-card">
-      <div class="mobile-top">
-        <a href="index.html" class="brand">
-          <span class="brand-icon">
-            <img src="aureon-symbol.png" alt="Aureon Scale symbol" />
+    <div class="mobile-menu-card">
+      <div class="mobile-menu-top">
+        <a href="index.html" class="brand" aria-label="Aureon Scale homepage">
+          <span class="brand-symbol">
+            <img src="aureon-symbol.png" alt="Aureon Scale symbol" onerror="this.style.display='none'; this.parentElement.classList.add('missing-logo');" />
           </span>
-          <span class="brand-text">
+
+          <span class="brand-name">
             <strong>Aureon</strong>
             <small>Scale</small>
           </span>
         </a>
 
-        <button class="close-btn" onclick="closeMenu()">×</button>
+        <button class="close-button" onclick="closeMenu()" aria-label="Close menu">×</button>
       </div>
 
       <nav class="mobile-links">
-        <a href="#services" onclick="closeMenu()">Services</a>
-        <a href="#systems" onclick="closeMenu()">Systems</a>
-        <a href="#process" onclick="closeMenu()">Process</a>
-        <a href="#team" onclick="closeMenu()">Team</a>
-        <a href="#contact" onclick="closeMenu()">Contact</a>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About us</a>
+        <a href="team.html">Team</a>
+        <a href="contact.html">Contact</a>
       </nav>
     </div>
   </div>
@@ -65,229 +67,230 @@
   <main>
     <section class="hero">
       <div class="container hero-grid">
-        <div class="hero-copy">
+        <div class="hero-left">
           <div class="eyebrow">
             <span></span>
-            Digital growth systems for modern businesses
+            Digital growth systems for local businesses
           </div>
 
           <h1>
-            We design the digital engine behind your business.
+            Build a sharper online system for your business.
           </h1>
 
           <p>
-            Aureon Scale builds websites, AI agents, dashboards, content systems,
-            and paid advertising funnels that help businesses look sharper, respond
-            faster, and grow with better structure.
+            Aureon Scale creates websites, AI automations, dashboards, content systems,
+            and paid ad setups that help businesses look professional, capture leads,
+            and move faster online.
           </p>
 
           <div class="hero-actions">
-            <a href="#contact" class="btn btn-red">Start a project</a>
-            <a href="#services" class="btn btn-light">Explore services</a>
+            <a href="contact.html" class="button red-button">Start a project</a>
+            <a href="services.html" class="button white-button">View services</a>
           </div>
         </div>
 
-        <div class="hero-panel">
-          <div class="panel-top">
-            <span class="live-dot"></span>
-            Growth System Preview
+        <div class="hero-right">
+          <div class="build-card">
+            <div class="build-card-top">
+              <span class="status-dot"></span>
+              System blueprint
+            </div>
+
+            <h2>Website, AI, content, and ads working together.</h2>
+
+            <div class="blueprint-list">
+              <div>
+                <strong>01</strong>
+                <p>Trust-building website</p>
+              </div>
+
+              <div>
+                <strong>02</strong>
+                <p>Lead capture and follow-up</p>
+              </div>
+
+              <div>
+                <strong>03</strong>
+                <p>Automation and dashboards</p>
+              </div>
+
+              <div>
+                <strong>04</strong>
+                <p>Content and paid growth</p>
+              </div>
+            </div>
           </div>
 
-          <div class="panel-card main-card">
-            <small>Core setup</small>
-            <h3>Website + AI + Growth</h3>
-            <p>A clean system built around trust, speed, and customer action.</p>
-          </div>
-
-          <div class="mini-grid">
-            <div class="mini-card">
-              <strong>01</strong>
-              <span>Lead capture</span>
-            </div>
-            <div class="mini-card">
-              <strong>02</strong>
-              <span>Automation</span>
-            </div>
-            <div class="mini-card">
-              <strong>03</strong>
-              <span>Content</span>
-            </div>
-            <div class="mini-card">
-              <strong>04</strong>
-              <span>Ads</span>
-            </div>
+          <div class="floating-note">
+            <strong>Goal:</strong> Make your business easier to find, trust, contact, and buy from.
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section services" id="services">
+    <section class="section services-preview">
       <div class="container">
-        <div class="section-head">
-          <span class="section-label">Services</span>
-          <h2>Everything your business needs to operate online.</h2>
+        <div class="section-heading">
+          <span>What we build</span>
+          <h2>Digital pieces that actually connect.</h2>
           <p>
-            We connect design, development, automation, and marketing into one
-            clean digital setup.
+            We do not only make things look good. We build the structure behind
+            the website, customer journey, and growth system.
           </p>
         </div>
 
-        <div class="service-grid">
+        <div class="services-grid">
           <article class="service-card">
-            <div class="service-number">01</div>
-            <h3>Website Design</h3>
+            <div class="service-icon">W</div>
+            <h3>Websites</h3>
             <p>
-              Custom websites, landing pages, booking flows, e-commerce pages,
-              and high-converting business pages.
+              Clean business websites, landing pages, booking flows, e-commerce,
+              and service pages built to convert visitors into leads.
             </p>
           </article>
 
           <article class="service-card">
-            <div class="service-number">02</div>
+            <div class="service-icon">AI</div>
             <h3>AI Agents</h3>
             <p>
-              AI customer response systems, follow-ups, reminders, FAQs, and
-              workflow automations.
+              AI response systems, follow-ups, reminders, customer support flows,
+              and smart automations for daily operations.
             </p>
           </article>
 
           <article class="service-card">
-            <div class="service-number">03</div>
+            <div class="service-icon">D</div>
             <h3>Dashboards</h3>
             <p>
-              Admin panels, databases, reports, internal tools, and systems that
-              keep operations organized.
+              Admin panels, databases, reporting tools, and internal systems that
+              help teams stay organized.
             </p>
           </article>
 
           <article class="service-card">
-            <div class="service-number">04</div>
-            <h3>Paid Growth</h3>
+            <div class="service-icon">G</div>
+            <h3>Growth</h3>
             <p>
-              Paid ads, content strategy, landing pages, creative testing, and
-              campaign support for growth.
+              Content systems, paid ads, landing pages, creative testing, and
+              campaign structure for better attention and leads.
             </p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="system-section" id="systems">
-      <div class="container system-grid">
-        <div>
-          <span class="section-label red-label">Why Aureon Scale</span>
-          <h2>Not just a website. A complete business system.</h2>
+    <section class="dark-section">
+      <div class="container dark-grid">
+        <div class="dark-copy">
+          <span>Why it matters</span>
+          <h2>A website is only useful when it helps the business move.</h2>
+          <p>
+            Your digital setup should explain the offer clearly, make the next
+            step easy, and connect customers to the right system fast.
+          </p>
         </div>
 
-        <div class="system-list">
-          <div class="system-row">
-            <span>01</span>
+        <div class="value-stack">
+          <div class="value-row">
+            <strong>01</strong>
             <div>
-              <h3>Built for trust</h3>
-              <p>Your website should make customers understand you fast and feel confident reaching out.</p>
+              <h3>Clear presentation</h3>
+              <p>Customers understand what you do, who it is for, and why they should trust you.</p>
             </div>
           </div>
 
-          <div class="system-row">
-            <span>02</span>
+          <div class="value-row">
+            <strong>02</strong>
             <div>
-              <h3>Built for action</h3>
-              <p>Every page needs a clear path: call, book, buy, request, or message.</p>
+              <h3>Better customer path</h3>
+              <p>Every visitor has a clear action: call, book, message, request, or buy.</p>
             </div>
           </div>
 
-          <div class="system-row">
-            <span>03</span>
+          <div class="value-row">
+            <strong>03</strong>
             <div>
-              <h3>Built for scale</h3>
-              <p>AI tools, dashboards, content, and ads help the business grow without messy systems.</p>
+              <h3>Systems behind the page</h3>
+              <p>AI, dashboards, forms, and follow-ups help the business run cleaner.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section process" id="process">
+    <section class="section process-section">
       <div class="container">
-        <div class="section-head center">
-          <span class="section-label">Process</span>
-          <h2>Simple process. Professional execution.</h2>
+        <div class="section-heading center">
+          <span>Our process</span>
+          <h2>Simple steps. Clean execution.</h2>
         </div>
 
         <div class="process-grid">
           <div class="process-card">
             <span>Step 1</span>
-            <h3>Discover</h3>
-            <p>We understand your business, offer, customers, and current problems.</p>
+            <h3>Map</h3>
+            <p>We learn your business, offer, customers, and current online problems.</p>
           </div>
 
           <div class="process-card">
             <span>Step 2</span>
-            <h3>Build</h3>
-            <p>We design and develop the website, system, automation, or growth setup.</p>
+            <h3>Design</h3>
+            <p>We plan the page structure, message, user journey, and visual direction.</p>
           </div>
 
           <div class="process-card">
             <span>Step 3</span>
-            <h3>Launch</h3>
-            <p>We prepare the setup for customers and make sure the digital path is clear.</p>
+            <h3>Build</h3>
+            <p>We create the website, automation, dashboard, or growth system.</p>
           </div>
 
           <div class="process-card">
             <span>Step 4</span>
-            <h3>Improve</h3>
-            <p>We support testing, content, ads, and improvements after the launch.</p>
+            <h3>Launch</h3>
+            <p>We prepare the setup for real customers and improve what needs fixing.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section team" id="team">
-      <div class="container">
-        <div class="section-head">
-          <span class="section-label">Team</span>
-          <h2>Meet the people behind the build.</h2>
-          <p>
-            Replace these cards with your team photos, names, and real positions.
-          </p>
+    <section class="section proof-section">
+      <div class="container proof-grid">
+        <div class="proof-card large-proof">
+          <span>Agency focus</span>
+          <h2>Built for businesses that need more than a nice page.</h2>
         </div>
 
-        <div class="team-grid">
-          <div class="team-card">
-            <div class="team-photo">Photo</div>
-            <h3>Your Name</h3>
-            <p>Content Creator / Growth Support</p>
-          </div>
+        <div class="proof-card">
+          <h3>Professional look</h3>
+          <p>Your brand looks cleaner, sharper, and easier to trust.</p>
+        </div>
 
-          <div class="team-card">
-            <div class="team-photo">Photo</div>
-            <h3>Team Member</h3>
-            <p>Web Developer / AI Automation</p>
-          </div>
+        <div class="proof-card">
+          <h3>Faster response</h3>
+          <p>AI and automation help reduce missed leads and slow follow-up.</p>
+        </div>
 
-          <div class="team-card">
-            <div class="team-photo">Photo</div>
-            <h3>Team Member</h3>
-            <p>Sales / Client Acquisition</p>
-          </div>
+        <div class="proof-card">
+          <h3>Growth support</h3>
+          <p>Content, ads, and landing pages give your business a stronger growth path.</p>
         </div>
       </div>
     </section>
 
-    <section class="contact-section" id="contact">
-      <div class="container contact-card">
+    <section class="contact-band">
+      <div class="container contact-grid">
         <div>
-          <span class="section-label red-label">Start here</span>
-          <h2>Ready to build something cleaner?</h2>
+          <span>Next step</span>
+          <h2>Ready to build your digital system?</h2>
           <p>
-            Tell us what you need help with. We can map the right website,
-            AI system, dashboard, content, or ad setup for your business.
+            Tell us what you are trying to launch, improve, or automate.
+            We will help map the right website, AI, dashboard, content, or ad setup.
           </p>
         </div>
 
-        <div class="contact-actions">
-          <a href="tel:+16199667654" class="btn btn-red">Call Us</a>
-          <a href="mailto:aureonscale@gmail.com" class="btn btn-dark">Email Us</a>
+        <div class="contact-buttons">
+          <a href="tel:+16199667654" class="button red-button">Call Us</a>
+          <a href="mailto:aureonscale@gmail.com" class="button dark-button">Email Us</a>
         </div>
       </div>
     </section>
@@ -296,10 +299,11 @@
   <footer>
     <div class="container footer-inner">
       <a href="index.html" class="brand footer-brand">
-        <span class="brand-icon">
-          <img src="aureon-symbol.png" alt="Aureon Scale symbol" />
+        <span class="brand-symbol">
+          <img src="aureon-symbol.png" alt="Aureon Scale symbol" onerror="this.style.display='none'; this.parentElement.classList.add('missing-logo');" />
         </span>
-        <span class="brand-text">
+
+        <span class="brand-name">
           <strong>Aureon</strong>
           <small>Scale</small>
         </span>
@@ -307,13 +311,13 @@
 
       <p>Websites, AI systems, dashboards, content, ads, and growth support.</p>
 
-      <div class="footer-links">
-        <a href="#services">Services</a>
-        <a href="#systems">Systems</a>
-        <a href="#process">Process</a>
-        <a href="#team">Team</a>
-        <a href="#contact">Contact</a>
-      </div>
+      <nav class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About us</a>
+        <a href="team.html">Team</a>
+        <a href="contact.html">Contact</a>
+      </nav>
     </div>
   </footer>
 
