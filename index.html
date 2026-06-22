@@ -1,213 +1,1156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aureon Scale | Digital Growth Systems</title>
-  <link rel="stylesheet" href="style.css">
+
+  <style>
+    :root {
+      --black: #1F1D1E;
+      --red: #AD3333;
+      --white: #FFFFFF;
+      --soft: #F7F4F3;
+      --gray: #706C6D;
+      --line: #E7E0DE;
+      --dark: #151313;
+      --radius: 34px;
+      --shadow: 0 28px 80px rgba(31, 29, 30, 0.12);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(92%, 1180px);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      padding: 18px 0;
+      background: rgba(255, 255, 255, 0.86);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+    }
+
+    .nav {
+      height: 82px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.95);
+      box-shadow: 0 18px 60px rgba(31, 29, 30, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 18px 0 30px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      white-space: nowrap;
+    }
+
+    .brand img {
+      width: 150px;
+      height: auto;
+      display: block;
+    }
+
+    .scale-pill {
+      border: 2px solid rgba(173, 51, 51, 0.22);
+      background: rgba(173, 51, 51, 0.06);
+      color: var(--red);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 2.5px;
+      line-height: 1;
+    }
+
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      color: var(--gray);
+      font-weight: 800;
+      font-size: 15px;
+    }
+
+    .desktop-nav a:hover {
+      color: var(--black);
+    }
+
+    .nav-button {
+      background: var(--black);
+      color: white !important;
+      padding: 13px 20px;
+      border-radius: 999px;
+      font-weight: 900;
+    }
+
+    .menu-btn {
+      display: none;
+      width: 58px;
+      height: 58px;
+      border-radius: 21px;
+      border: 1px solid var(--line);
+      background: white;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .menu-btn span {
+      display: block;
+      width: 28px;
+      height: 4px;
+      background: var(--black);
+      border-radius: 999px;
+      margin: 4px 0;
+    }
+
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      background: rgba(31, 29, 30, 0.28);
+      backdrop-filter: blur(18px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .mobile-menu.active {
+      display: flex;
+    }
+
+    .menu-card {
+      width: min(100%, 560px);
+      background: white;
+      border-radius: 42px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      padding: 34px;
+    }
+
+    .menu-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 54px;
+    }
+
+    .close {
+      border: none;
+      background: transparent;
+      font-size: 48px;
+      line-height: 1;
+      cursor: pointer;
+      color: var(--black);
+    }
+
+    .mobile-links {
+      display: grid;
+      gap: 20px;
+      border-left: 4px solid rgba(173, 51, 51, 0.28);
+      padding-left: 28px;
+    }
+
+    .mobile-links a {
+      font-size: clamp(42px, 11vw, 70px);
+      font-weight: 950;
+      letter-spacing: -4px;
+      line-height: 0.95;
+    }
+
+    .hero {
+      padding: 74px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(173,51,51,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(173,51,51,0.06) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: radial-gradient(circle at 50% 28%, black 0%, transparent 62%);
+      pointer-events: none;
+    }
+
+    .hero-layout {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 0.8fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--line);
+      background: white;
+      border-radius: 999px;
+      padding: 12px 18px;
+      color: var(--gray);
+      font-weight: 900;
+      margin-bottom: 28px;
+      box-shadow: 0 12px 40px rgba(31,29,30,0.04);
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      background: var(--red);
+      border-radius: 50%;
+    }
+
+    h1 {
+      font-size: clamp(58px, 8vw, 112px);
+      line-height: 0.86;
+      letter-spacing: -6px;
+      font-weight: 950;
+    }
+
+    h1 em,
+    h2 em {
+      font-family: Georgia, serif;
+      font-weight: 400;
+      color: var(--red);
+    }
+
+    .hero p {
+      margin: 30px 0 36px;
+      color: var(--gray);
+      font-size: clamp(22px, 3vw, 30px);
+      line-height: 1.48;
+      max-width: 760px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 18px 30px;
+      font-size: 19px;
+      font-weight: 950;
+      border: 1px solid var(--line);
+      transition: 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-red {
+      background: var(--red);
+      border-color: var(--red);
+      color: white;
+      box-shadow: 0 18px 46px rgba(173, 51, 51, 0.24);
+    }
+
+    .btn-white {
+      background: white;
+      color: var(--black);
+    }
+
+    .dashboard-card {
+      background: var(--black);
+      color: white;
+      border-radius: 42px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dashboard-card::before {
+      content: "";
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      right: -80px;
+      top: -80px;
+      background: radial-gradient(circle, rgba(173,51,51,0.44), transparent 65%);
+    }
+
+    .dash-label {
+      color: #B7B0B1;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      font-size: 13px;
+      margin-bottom: 28px;
+      position: relative;
+    }
+
+    .dash-title {
+      font-size: 38px;
+      line-height: 0.98;
+      letter-spacing: -2px;
+      font-weight: 950;
+      margin-bottom: 28px;
+      position: relative;
+    }
+
+    .system-list {
+      display: grid;
+      gap: 12px;
+      position: relative;
+    }
+
+    .system-item {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 24px;
+      padding: 18px;
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .system-icon {
+      width: 42px;
+      height: 42px;
+      background: rgba(173,51,51,0.18);
+      color: #ffdddd;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-weight: 950;
+    }
+
+    .system-item strong {
+      display: block;
+      font-size: 19px;
+      margin-bottom: 5px;
+    }
+
+    .system-item span {
+      color: #BDB7B8;
+      line-height: 1.35;
+      font-size: 15px;
+    }
+
+    .stats {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      position: relative;
+    }
+
+    .stat {
+      background: white;
+      color: var(--black);
+      border-radius: 20px;
+      padding: 18px;
+    }
+
+    .stat b {
+      display: block;
+      font-size: 28px;
+      letter-spacing: -1px;
+    }
+
+    .stat small {
+      color: var(--gray);
+      font-weight: 800;
+    }
+
+    .section {
+      padding: 90px 0;
+    }
+
+    .section-head {
+      max-width: 850px;
+      margin-bottom: 42px;
+    }
+
+    .section-head.center {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .label {
+      color: #9B9495;
+      text-transform: uppercase;
+      letter-spacing: 7px;
+      font-size: 15px;
+      margin-bottom: 22px;
+    }
+
+    h2 {
+      font-size: clamp(46px, 7vw, 86px);
+      line-height: 0.9;
+      letter-spacing: -5px;
+      font-weight: 950;
+      margin-bottom: 22px;
+    }
+
+    .section-head p {
+      color: var(--gray);
+      font-size: 24px;
+      line-height: 1.52;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--line);
+      border-radius: 42px;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 22px 70px rgba(31,29,30,0.06);
+    }
+
+    .service {
+      padding: 34px;
+      min-height: 310px;
+      border-right: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .service:last-child {
+      border-right: none;
+    }
+
+    .service-code {
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      background: rgba(173,51,51,0.10);
+      color: var(--red);
+      display: grid;
+      place-items: center;
+      font-weight: 950;
+      margin-bottom: 40px;
+    }
+
+    .service h3 {
+      font-size: 32px;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .service p {
+      color: var(--gray);
+      font-size: 19px;
+      line-height: 1.45;
+    }
+
+    .dark-section {
+      width: min(94%, 1320px);
+      margin: auto;
+      background:
+        radial-gradient(circle at 80% 0%, rgba(173,51,51,0.18), transparent 32%),
+        var(--dark);
+      color: white;
+      border-radius: 54px;
+      padding: 80px 0;
+      box-shadow: var(--shadow);
+    }
+
+    .dark-section .section-head p {
+      color: #BDB7B8;
+    }
+
+    .process {
+      display: grid;
+      gap: 16px;
+    }
+
+    .process-row {
+      background: white;
+      color: var(--black);
+      border-radius: 32px;
+      padding: 30px;
+      display: grid;
+      grid-template-columns: 100px 1fr 140px;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .number {
+      font-size: 46px;
+      font-weight: 950;
+      color: var(--red);
+      letter-spacing: -3px;
+    }
+
+    .process-row h3 {
+      font-size: 32px;
+      letter-spacing: -2px;
+      margin-bottom: 8px;
+    }
+
+    .process-row p {
+      color: var(--gray);
+      font-size: 20px;
+      line-height: 1.45;
+    }
+
+    .tag {
+      justify-self: end;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 10px 15px;
+      color: var(--gray);
+      font-weight: 900;
+      font-size: 13px;
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .work-card {
+      border: 1px solid var(--line);
+      border-radius: 42px;
+      background: white;
+      overflow: hidden;
+      box-shadow: 0 22px 70px rgba(31,29,30,0.06);
+    }
+
+    .work-top {
+      height: 230px;
+      background:
+        linear-gradient(135deg, rgba(173,51,51,0.14), transparent),
+        var(--soft);
+      display: grid;
+      place-items: center;
+      position: relative;
+    }
+
+    .mock {
+      width: 72%;
+      height: 62%;
+      border-radius: 24px;
+      background: white;
+      border: 1px solid var(--line);
+      box-shadow: 0 20px 60px rgba(31,29,30,0.12);
+      display: grid;
+      place-items: center;
+      color: var(--red);
+      font-size: 42px;
+      font-weight: 950;
+    }
+
+    .work-body {
+      padding: 32px;
+    }
+
+    .work-body small {
+      color: var(--red);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
+
+    .work-body h3 {
+      font-size: 36px;
+      letter-spacing: -2px;
+      margin: 14px 0 12px;
+    }
+
+    .work-body p {
+      color: var(--gray);
+      font-size: 20px;
+      line-height: 1.5;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .team-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 42px;
+      padding: 24px;
+      box-shadow: 0 22px 70px rgba(31,29,30,0.06);
+    }
+
+    .photo {
+      height: 280px;
+      border-radius: 30px;
+      background:
+        radial-gradient(circle at center, rgba(173,51,51,0.18), transparent 50%),
+        var(--soft);
+      display: grid;
+      place-items: center;
+      color: var(--red);
+      font-size: 64px;
+      font-weight: 950;
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .team-card h3 {
+      font-size: 30px;
+      letter-spacing: -1.5px;
+      margin-bottom: 8px;
+    }
+
+    .team-card p {
+      color: var(--gray);
+      font-size: 19px;
+    }
+
+    .cta {
+      padding: 90px 0;
+    }
+
+    .cta-card {
+      background:
+        radial-gradient(circle at top right, rgba(173,51,51,0.20), transparent 34%),
+        var(--black);
+      color: white;
+      border-radius: 54px;
+      padding: 58px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 32px;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+
+    .cta-card h2 {
+      color: white;
+      max-width: 760px;
+    }
+
+    .cta-card p {
+      color: #BDB7B8;
+      font-size: 24px;
+      line-height: 1.5;
+      max-width: 720px;
+    }
+
+    footer {
+      padding: 45px 0 80px;
+      text-align: center;
+      color: #918B8C;
+    }
+
+    .footer-line {
+      border-top: 1px solid var(--line);
+      margin-bottom: 34px;
+    }
+
+    .footer-logo {
+      justify-content: center;
+      margin-bottom: 14px;
+    }
+
+    .footer-logo img {
+      width: 170px;
+    }
+
+    .footer-links {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      font-size: 19px;
+    }
+
+    @media (max-width: 980px) {
+      .desktop-nav {
+        display: none;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .hero-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .service-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .process-row {
+        grid-template-columns: 1fr;
+      }
+
+      .tag {
+        justify-self: start;
+      }
+
+      .work-grid,
+      .team-grid,
+      .cta-card {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      header {
+        padding: 14px 0;
+      }
+
+      .nav {
+        height: 76px;
+        padding: 0 14px 0 22px;
+      }
+
+      .brand img {
+        width: 118px;
+      }
+
+      .scale-pill {
+        padding: 6px 9px;
+        font-size: 8px;
+        letter-spacing: 1.7px;
+      }
+
+      h1 {
+        font-size: clamp(58px, 16vw, 82px);
+        letter-spacing: -4px;
+      }
+
+      h2 {
+        letter-spacing: -3px;
+      }
+
+      .hero {
+        padding-top: 56px;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .dashboard-card,
+      .cta-card {
+        border-radius: 38px;
+        padding: 34px;
+      }
+
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service {
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+        min-height: 260px;
+      }
+
+      .service:last-child {
+        border-bottom: none;
+      }
+
+      .dark-section {
+        width: 100%;
+        border-radius: 40px;
+      }
+
+      .work-top {
+        height: 190px;
+      }
+
+      .photo {
+        height: 240px;
+      }
+
+      .footer-logo img {
+        width: 140px;
+      }
+    }
+  </style>
 </head>
-<body class="grid-bg">
 
-<header>
-  <div class="container">
-    <div class="nav">
-      <a href="index.html" class="logo">AURE<span class="mark">✺</span>N<small>SCALE</small></a>
-
-      <nav class="desktop-links">
-        <a href="index.html">Home</a>
-        <a href="services.html">Services</a>
-        <a href="about.html">About us</a>
-        <a href="team.html">Team</a>
-        <a href="contact.html" class="nav-cta">Start Project</a>
-      </nav>
-
-      <button class="menu-btn" onclick="openMenu()">
-        <div class="menu-lines"><span></span><span></span><span></span></div>
-      </button>
-    </div>
-  </div>
-</header>
-
-<div class="mobile-menu" id="mobileMenu">
-  <div class="menu-card">
-    <div class="menu-top">
-      <a href="index.html" class="logo">AURE<span class="mark">✺</span>N</a>
-      <button class="close-btn" onclick="closeMenu()">×</button>
-    </div>
-
-    <nav class="mobile-links">
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="about.html">About us</a>
-      <a href="team.html">Team</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </div>
-</div>
-
-<main>
-  <section class="page-hero">
+<body>
+  <header>
     <div class="container">
-      <div class="hero-grid">
+      <div class="nav">
+        <a href="index.html" class="brand" aria-label="Aureon Scale Home">
+          <img src="aureon-wordmark.png" alt="Aureon logo">
+          <span class="scale-pill">SCALE</span>
+        </a>
+
+        <nav class="desktop-nav">
+          <a href="#services">Services</a>
+          <a href="#process">Process</a>
+          <a href="#work">Work</a>
+          <a href="#team">Team</a>
+          <a href="contact.html" class="nav-button">Start Project</a>
+        </nav>
+
+        <button class="menu-btn" onclick="openMenu()" aria-label="Open menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="menu-card">
+      <div class="menu-top">
+        <a href="index.html" class="brand">
+          <img src="aureon-wordmark.png" alt="Aureon logo">
+          <span class="scale-pill">SCALE</span>
+        </a>
+        <button class="close" onclick="closeMenu()">×</button>
+      </div>
+
+      <nav class="mobile-links">
+        <a href="#services" onclick="closeMenu()">Services</a>
+        <a href="#process" onclick="closeMenu()">Process</a>
+        <a href="#work" onclick="closeMenu()">Work</a>
+        <a href="#team" onclick="closeMenu()">Team</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-layout">
         <div>
-          <div class="eyebrow"><span class="dot"></span> Digital command systems for growing businesses</div>
+          <div class="eyebrow">
+            <span class="dot"></span>
+            Digital systems for serious growth
+          </div>
 
-          <h1>Build the system behind your <em>business growth.</em></h1>
+          <h1>
+            Build the system behind your <em>business growth.</em>
+          </h1>
 
-          <p class="hero-text">
-            Aureon Scale builds websites, AI agents, dashboards, booking flows, content systems,
-            and paid ads that work together like one clean growth engine.
+          <p>
+            Aureon Scale builds websites, AI agents, dashboards, content systems,
+            and paid ad funnels that work together like one clean growth engine.
           </p>
 
           <div class="buttons">
-            <a href="contact.html" class="btn btn-red">Start Project ↗</a>
-            <a href="services.html" class="btn btn-white">View Systems</a>
+            <a href="contact.html" class="btn btn-red">Start a project</a>
+            <a href="#services" class="btn btn-white">View services</a>
           </div>
         </div>
 
-        <div class="command-card">
-          <div class="command-top">
-            <div class="status"><span></span> Growth System Live</div>
-            <div class="status">Aureon OS</div>
+        <div class="dashboard-card">
+          <div class="dash-label">Growth engine</div>
+
+          <div class="dash-title">
+            One setup for leads, systems, and execution.
           </div>
 
-          <div class="command-title">Your business stack, connected.</div>
-
-          <div class="metric-grid">
-            <div class="metric">
-              <strong>01</strong>
-              <p>Website built to capture trust and leads.</p>
+          <div class="system-list">
+            <div class="system-item">
+              <div class="system-icon">01</div>
+              <div>
+                <strong>Website foundation</strong>
+                <span>Clear offer, strong trust, booking path, and conversion flow.</span>
+              </div>
             </div>
 
-            <div class="metric">
-              <strong>02</strong>
-              <p>AI follow-up and customer response system.</p>
+            <div class="system-item">
+              <div class="system-icon">02</div>
+              <div>
+                <strong>Automation layer</strong>
+                <span>AI agents, forms, follow-ups, dashboards, and workflow support.</span>
+              </div>
             </div>
 
-            <div class="metric">
-              <strong>03</strong>
-              <p>Dashboard for visibility and operations.</p>
-            </div>
-
-            <div class="metric">
-              <strong>04</strong>
-              <p>Content and ads to bring qualified traffic.</p>
+            <div class="system-item">
+              <div class="system-icon">03</div>
+              <div>
+                <strong>Growth channel</strong>
+                <span>Content, paid ads, landing pages, and performance testing.</span>
+              </div>
             </div>
           </div>
 
-          <div class="pipeline">
-            <div class="pipe-row"><div class="pipe-num">1</div><div>Visitor lands on website</div><div class="pipe-tag">Traffic</div></div>
-            <div class="pipe-row"><div class="pipe-num">2</div><div>Lead gets captured</div><div class="pipe-tag">Form / Booking</div></div>
-            <div class="pipe-row"><div class="pipe-num">3</div><div>AI follows up</div><div class="pipe-tag">Automation</div></div>
-            <div class="pipe-row"><div class="pipe-num">4</div><div>Dashboard tracks progress</div><div class="pipe-tag">Operations</div></div>
+          <div class="stats">
+            <div class="stat">
+              <b>4</b>
+              <small>Core services</small>
+            </div>
+            <div class="stat">
+              <b>1</b>
+              <small>Connected system</small>
+            </div>
+            <div class="stat">
+              <b>∞</b>
+              <small>Built to scale</small>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="section-head center">
-        <div class="label">Core systems</div>
-        <h2>Everything your business needs to look ready and run better.</h2>
-        <p>Instead of random tools, we build connected digital systems that support your customer journey from attention to conversion.</p>
-      </div>
-
-      <div class="cards-grid">
-        <div class="card">
-          <div class="icon">WEB</div>
-          <h3>Website System</h3>
-          <p>Professional sites, landing pages, booking flows, QR ordering, and e-commerce pages built for trust.</p>
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head center">
+          <div class="label">What we build</div>
+          <h2>Services designed to work <em>together.</em></h2>
+          <p>
+            Not random marketing. Not just a nice page. We build the digital layer
+            that helps a business look professional, respond faster, and grow cleaner.
+          </p>
         </div>
 
-        <div class="card">
-          <div class="icon">AI</div>
-          <h3>AI System</h3>
-          <p>Customer response, reminders, lead follow-up, and automation workflows built around your process.</p>
-        </div>
+        <div class="service-grid">
+          <div class="service">
+            <div>
+              <div class="service-code">WEB</div>
+              <h3>Websites</h3>
+              <p>Modern websites, landing pages, booking flows, e-commerce, and service pages built to convert.</p>
+            </div>
+          </div>
 
-        <div class="card">
-          <div class="icon">ADS</div>
-          <h3>Growth System</h3>
-          <p>Content, creative testing, paid ads, and strategy to help your brand get seen by the right people.</p>
+          <div class="service">
+            <div>
+              <div class="service-code">AI</div>
+              <h3>AI Agents</h3>
+              <p>AI response systems for calls, messages, reminders, FAQs, lead handling, and follow-up.</p>
+            </div>
+          </div>
+
+          <div class="service">
+            <div>
+              <div class="service-code">OPS</div>
+              <h3>Dashboards</h3>
+              <p>Admin panels, databases, reporting views, and internal tools that make operations cleaner.</p>
+            </div>
+          </div>
+
+          <div class="service">
+            <div>
+              <div class="service-code">ADS</div>
+              <h3>Growth</h3>
+              <p>Content systems, paid ads, landing pages, creative testing, and brand strategy for scale.</p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="dark-band">
-    <div class="container">
-      <div class="section-head center">
-        <div class="label">How it works</div>
-        <h2>Built as one system, not separate pieces.</h2>
-        <p>Your website, AI tools, dashboard, content, and ads should all support the same goal: more trust, more leads, and smoother operations.</p>
+    <section class="dark-section" id="process">
+      <div class="container">
+        <div class="section-head">
+          <div class="label">How we work</div>
+          <h2>Clear process. Better execution.</h2>
+          <p>
+            Every project starts with the business goal, then we build the website,
+            systems, and growth path around it.
+          </p>
+        </div>
+
+        <div class="process">
+          <div class="process-row">
+            <div class="number">01</div>
+            <div>
+              <h3>Map the business</h3>
+              <p>We understand your offer, customer journey, services, and what needs to happen online.</p>
+            </div>
+            <div class="tag">Strategy</div>
+          </div>
+
+          <div class="process-row">
+            <div class="number">02</div>
+            <div>
+              <h3>Build the system</h3>
+              <p>We design and develop the site, dashboards, AI workflows, forms, and conversion structure.</p>
+            </div>
+            <div class="tag">Build</div>
+          </div>
+
+          <div class="process-row">
+            <div class="number">03</div>
+            <div>
+              <h3>Launch and grow</h3>
+              <p>We support the launch with content, paid ads, tracking, testing, and growth improvements.</p>
+            </div>
+            <div class="tag">Scale</div>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="system-stack">
-        <div class="system-row">
-          <div class="system-num">01</div>
+    <section class="section" id="work">
+      <div class="container">
+        <div class="section-head">
+          <div class="label">Showcase</div>
+          <h2>Useful builds for real businesses.</h2>
+          <p>
+            Use this area to show demo projects, client work, before/after redesigns,
+            or local business website examples.
+          </p>
+        </div>
+
+        <div class="work-grid">
+          <div class="work-card">
+            <div class="work-top">
+              <div class="mock">PF</div>
+            </div>
+            <div class="work-body">
+              <small>Website + booking</small>
+              <h3>Pure Finish SoCal</h3>
+              <p>A clean service website concept with booking flow, trust sections, and stronger presentation.</p>
+            </div>
+          </div>
+
+          <div class="work-card">
+            <div class="work-top">
+              <div class="mock">AI</div>
+            </div>
+            <div class="work-body">
+              <small>Automation setup</small>
+              <h3>AI Follow-Up System</h3>
+              <p>An automated lead response flow designed to reduce missed messages and speed up customer replies.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="team">
+      <div class="container">
+        <div class="section-head center">
+          <div class="label">Aureon Scale team</div>
+          <h2>Small team. Sharp execution.</h2>
+          <p>
+            Add your team photos, names, and positions here so clients can see who is behind the work.
+          </p>
+        </div>
+
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="photo">01</div>
+            <h3>Your Name</h3>
+            <p>Content Creator / Growth Support</p>
+          </div>
+
+          <div class="team-card">
+            <div class="photo">02</div>
+            <h3>Team Member</h3>
+            <p>Web Developer / AI Automation</p>
+          </div>
+
+          <div class="team-card">
+            <div class="photo">03</div>
+            <h3>Team Member</h3>
+            <p>Sales / Client Acquisition</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <div class="cta-card">
           <div>
-            <h3>Map the business</h3>
-            <p>We understand your offer, customers, bottlenecks, and what needs to happen online for your business to grow.</p>
+            <div class="label">Next step</div>
+            <h2>Ready to build a cleaner digital system?</h2>
+            <p>
+              Tell us what you need. We will map the right mix of website, AI,
+              dashboard, content, and growth support for your business.
+            </p>
           </div>
-        </div>
 
-        <div class="system-row">
-          <div class="system-num">02</div>
-          <div>
-            <h3>Build the digital layer</h3>
-            <p>We create the website, AI agent, dashboard, booking flow, content system, or paid ad structure your business needs.</p>
-          </div>
-        </div>
-
-        <div class="system-row">
-          <div class="system-num">03</div>
-          <div>
-            <h3>Launch and improve</h3>
-            <p>Once the system is live, we help improve the path from attention to action so your setup keeps getting better.</p>
+          <div class="buttons">
+            <a href="contact.html" class="btn btn-red">Contact Aureon Scale</a>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <section class="section">
+  <footer>
     <div class="container">
-      <div class="white-box">
-        <div class="label">Next step</div>
-        <h2>Ready to build your business growth system?</h2>
-        <p>Tell us what you are launching, fixing, or scaling. We will help choose the right digital setup for your business.</p>
+      <div class="footer-line"></div>
 
-        <div class="buttons" style="margin-top:34px;">
-          <a href="contact.html" class="btn btn-red">Request consultation</a>
-          <a href="services.html" class="btn btn-white">Explore services</a>
-        </div>
+      <a href="index.html" class="brand footer-logo">
+        <img src="aureon-wordmark.png" alt="Aureon logo">
+        <span class="scale-pill">SCALE</span>
+      </a>
+
+      <p>Websites, AI systems, dashboards, content, ads, and growth support.</p>
+
+      <div class="footer-links">
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#work">Work</a>
+        <a href="#team">Team</a>
+        <a href="contact.html">Contact</a>
       </div>
     </div>
-  </section>
-</main>
+  </footer>
 
-<footer>
-  <div class="container">
-    <div class="footer-line"></div>
-    <div class="logo footer-logo">AURE<span class="mark">✺</span>N<small>SCALE</small></div>
-    <p>Websites, AI systems, dashboards, content, ads, and growth support.</p>
+  <script>
+    function openMenu() {
+      document.getElementById("mobileMenu").classList.add("active");
+      document.body.style.overflow = "hidden";
+    }
 
-    <div class="footer-links">
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="about.html">About us</a>
-      <a href="team.html">Team</a>
-      <a href="contact.html">Contact</a>
-    </div>
-  </div>
-</footer>
-
-<script>
-function openMenu(){document.getElementById("mobileMenu").classList.add("active")}
-function closeMenu(){document.getElementById("mobileMenu").classList.remove("active")}
-</script>
-
+    function closeMenu() {
+      document.getElementById("mobileMenu").classList.remove("active");
+      document.body.style.overflow = "auto";
+    }
+  </script>
 </body>
 </html>
