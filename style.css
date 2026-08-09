@@ -632,4 +632,63 @@ footer nav {
 .logo span,
 .footer-logo span {
   font-size: 23px;
-  font-weight: 950;
+  font-weight: 950; }
+
+/* AUREON SCALE SOCIAL LINKS */
+
+.social-links {
+  margin-top: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.social-icon {
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease,
+              border-color 0.25s ease,
+              box-shadow 0.25s ease;
+}
+
+.social-icon img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  opacity: 0.75;
+  transition: opacity 0.25s ease;
+}
+
+.social-icon:hover {
+  transform: translateY(-4px);
+  border-color: var(--red);
+  box-shadow: 0 12px 30px rgba(173, 51, 51, 0.16);
+}
+
+.social-icon:hover img {
+  opacity: 1;
+}
+
+@media (max-width: 620px) {
+  .social-links {
+    margin-top: 24px;
+    gap: 14px;
+  }
+
+  .social-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .social-icon img {
+    width: 19px;
+    height: 19px;
+  }
+}
